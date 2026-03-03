@@ -1,27 +1,101 @@
 export const skills = [
-    // Languages
-    { id: 1, name: "C++", icons: "Code2" },
-    { id: 2, name: "Java", icons: "Code2" },
-    { id: 3, name: "Python", icons: "Code2" },
-    { id: 4, name: "JavaScript", icons: "Code2" },
-    { id: 5, name: "TypeScript", icons: "Code2" },
-
-    // Frontend / Full Stack
-    { id: 6, name: "React.js", icons: "Atom" },
-    { id: 7, name: "Next.js", icons: "Globe" },
-    { id: 8, name: "Node.js", icons: "Server" },
-
-    // Databases
-    { id: 9, name: "PostgreSQL", icons: "Database" },
-    { id: 10, name: "MongoDB", icons: "Database" },
-    { id: 11, name: "Prisma", icons: "Layers" },
-
-    // Tools & Deployment
-    { id: 12, name: "GitHub", icons: "Github" },
-    { id: 13, name: "Postman", icons: "Send" },
-    { id: 14, name: "Vercel", icons: "Rocket" },
-    { id: 15, name: "AWS", icons: "Cloud" },
-
-    // AI
-    { id: 16, name: "Generative AI", icons: "Sparkles" }
+  {
+    id: 1,
+    name: 'React.js',
+    icon: 'Code2',
+    level: 'Expert',
+  },
+  {
+    id: 2,
+    name: 'JavaScript',
+    icon: 'FileCode',
+    level: 'Expert',
+  },
+  {
+    id: 3,
+    name: 'TypeScript',
+    icon: 'FileType',
+    level: 'Intermediate',
+  },
+  {
+    id: 4,
+    name: 'Next.js',
+    icon: 'Zap',
+    level: 'Advanced',
+  },
+  {
+    id: 5,
+    name: 'Tailwind CSS',
+    icon: 'Palette',
+    level: 'Expert',
+  },
+  {
+    id: 6,
+    name: 'Node.js',
+    icon: 'Server',
+    level: 'Intermediate',
+  },
+  {
+    id: 7,
+    name: 'Git & GitHub',
+    icon: 'GitBranch',
+    level: 'Advanced',
+  },
+  {
+    id: 8,
+    name: 'REST APIs',
+    icon: 'Globe',
+    level: 'Advanced',
+  },
+  {
+    id: 9,
+    name: 'Responsive Design',
+    icon: 'Smartphone',
+    level: 'Expert',
+  },
+  // Databases
+  {
+    id: 10,
+    name: 'PostgreSQL',
+    icon: 'Database',
+    level: 'Expert',
+  },
+  {
+    id: 11,
+    name: 'MongoDB',
+    icon: 'Database',
+    level: 'Advanced',
+  },
+  {
+    id: 12,
+    name: 'Prisma',
+    icon: 'Layers',
+    level: 'Intermediate',
+  },
+  // Tools & Deployment
+  {
+    id: 13,
+    name: 'Postman',
+    icon: 'Send',
+    level: 'Intermediate',
+  },
+  {
+    id: 14,
+    name: 'Vercel',
+    icon: 'Rocket',
+    level: 'Advanced',
+  },
+  {
+    id: 15,
+    name: 'AWS',
+    icon: 'Cloud',
+    level: 'Intermediate',
+  },
+  // AI
+  {
+    id: 16,
+    name: 'Generative AI',
+    icon: 'Sparkles',
+    level: 'Intermediate',
+  },
 ];
