@@ -12,10 +12,10 @@ export const PERSONAL_INFO = {
 };
 
 export const STATS = [
-    { label: "Projects Completed", value: "15+" },
+    { label: "Projects Shipped", value: "15+" },
     { label: "GitHub Commits", value: "500+" },
     { label: "Hours of Coding", value: "600+" },
-    { label: "Technologies Explored", value: "15+" }
+    { label: "Technologies Explored", value: "20+" }
 ];
 
 export const ABOUT_STATS = [
