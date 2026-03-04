@@ -146,14 +146,6 @@ const Hero = () => {
                         </div>
 
                         <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer'>
-                          <SiGooglegemini className='w-full h-full text-primary'/>
-                        </div>
-
-                        <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer'>
-                          <SiPostman className='w-full h-full text-primary'/>
-                        </div>
-
-                        <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer'>
                           <SiGithub className='w-full h-full text-primary'/>
                         </div>
 
@@ -175,9 +167,8 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <button
         onClick={() => scrollToSection('about')}
-        className='absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer'
+        className='absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-10'
       >
-
         <ChevronDown className='w-8 h-8 text-primary' />
       </button>
 

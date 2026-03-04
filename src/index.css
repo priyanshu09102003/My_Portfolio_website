@@ -55,6 +55,32 @@
     }
   }
 
+   @keyframes glow {
+    0%, 100% {
+      text-shadow: 
+        0 0 4px rgba(255,255,255,0.9),
+        0 0 12px rgba(141, 255, 105, 0.8),
+        0 0 30px rgba(141, 255, 105, 0.5),
+        0 0 55px rgba(141, 255, 105, 0.25);
+      color: #ffffff;
+    }
+    50% {
+      text-shadow: 
+        0 0 4px rgba(255,255,255,0.7),
+        0 0 16px rgba(141, 255, 105, 0.9),
+        0 0 40px rgba(141, 255, 105, 0.4),
+        0 0 70px rgba(141, 255, 105, 0.15);
+      color: #efffef;
+    }
+  }
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
   .animate-fadeIn {
     animation: fadeIn 0.5s ease-out;
   }

@@ -55,8 +55,8 @@ const RadialGradient = ({variant='hero', gradients=[]}) => {
           { color: 'rgba(141, 255, 105, 0.45)', stop: '100%' },
           { color: 'rgba(141, 255, 105, 0.25)', stop: '100%' },
         ],
-        blur: '60px',
-        opacity: 0.5,
+        blur: '40px',
+        opacity: 0.9,
       }
     ]
   }

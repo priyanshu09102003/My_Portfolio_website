@@ -19,9 +19,9 @@ export const STATS = [
 ];
 
 export const ABOUT_STATS = [
-    { label: "Publications", value: "1 (IEEE)" },
-    { label: "Hackathon Finalist", value: "Top 40/1200+" },
-    { label: "SaaS Products", value: "3+" }
+    { label: "Years Coding", value: "3+" },
+    { label: "API Integrations", value: "15+" },
+    { label: "Apps Deployed", value: "15+" },
 ];
 
 export const SOCIAL_LINKS = {
