@@ -58,6 +58,22 @@ const RadialGradient = ({variant='hero', gradients=[]}) => {
         blur: '40px',
         opacity: 0.9,
       }
+    ],
+
+        left: [
+      {
+        position: 'top-1/2 -left-20 -translate-y-1/2',
+        size: 'w-[700px] h-[700px]',
+        colors: [
+          { color: 'rgba(141, 255, 105, 0.25)', stop: '100%' },
+          { color: 'rgba(141, 255, 105, 0.45)', stop: '100%' },
+          { color: 'rgba(141, 255, 105, 0.5)',  stop: '100%' },
+          { color: 'rgba(141, 255, 105, 0.45)', stop: '100%' },
+          { color: 'rgba(141, 255, 105, 0.25)', stop: '100%' },
+        ],
+        blur: '40px',
+        opacity: 0.9,
+      }
     ]
   }
 
