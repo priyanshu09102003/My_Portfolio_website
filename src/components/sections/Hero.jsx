@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section className='relative min-h-screen flex items-center overflow-hidden bg-black'>
 
-      {/* <RadialGradient variant = "hero" /> */}
+      <RadialGradient variant = "hero" />
 
 
       {/* Content Container */}
