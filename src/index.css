@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
-@theme{
-  --font-display: "Urbanist" , sans-serif;
+@theme {
+  --font-display: "Urbanist", sans-serif;
   --breakpoint-3xl: 1920px;
   --color-primary: #8DFF69;
 }
 
-@layer base{
-  html{
+@layer base {
+  html {
     font-family: var(--font-display);
     scroll-behavior: smooth;
     user-select: none;
   }
 
-  body{
+  body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #000000;
@@ -22,76 +22,62 @@
     overflow-x: hidden;
   }
 
-  ::-webkit-scrollbar{
+  ::-webkit-scrollbar {
     width: 0px;
     display: none;
   }
 
-
-  /* Animations keyframe */
-
-
-  @keyframe fadeIn{
-    from{
+  @keyframes fadeIn {
+    from {
       opacity: 0;
     }
-
-    to{
+    to {
       opacity: 1;
     }
   }
 
-  @keyframe pulse{
+  @keyframes pulse {
     0%,
-    100%{
+    100% {
       opacity: 0.3;
     }
-
-    50%{
+    50% {
       opacity: 0.5;
     }
   }
 
-
-  /* UTILITY CLASSES */
-
-  .animate-fadeIn{
-    animation: fadeIn 0.5s ease-out;
-  }
-
-  .animate-pulse{
-    animation: pulse 3s ease-in-out infinite;
-  }
-
-  .animate-spin-slow{
-    animation: spin 9s linear infinite;
-  }
-
-  @keyframes spin{
-    from{
+  @keyframes spin {
+    from {
       transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 
-  to{
-    transform: rotate(360deg)
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
   }
 
-  /* Line clamp */
-  .line-clamp-2{
+  .animate-pulse {
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 9s linear infinite;
+  }
+
+  .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-
   }
 
-  .line-clamp-3{
+  .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-
-  
 }

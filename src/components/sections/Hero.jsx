@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import { ChevronDown, Star } from 'lucide-react'
-import {SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiPostgresql, SiGooglegemini} from "react-icons/si";
+import {SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiPostgresql, SiGooglegemini, SiPostman, SiGithub} from "react-icons/si";
 import { PERSONAL_INFO, STATS } from '@/utils/constants';
 import { scrollToSection } from '@/hooks/useScrollSpy';
 import FadeIn from '../animations/FadeIn';
@@ -99,10 +99,12 @@ const Hero = () => {
 
               <div className="relative overflow-hidden rounded-2xl aspect-4/5 max-w-[500px] ml-auto group">
 
-                  <div className='absolute inset-0 rounded-2xl overflow-hidden'>
-                    <div className='absolute inset-[-2px] bg-linear-to-r from-primary/20 via-primary/10 to-primary animate-spin-slow rounded-2xl'></div>
+                  <FadeIn delay={600}>
+                    <div className='absolute inset-0 rounded-2xl overflow-hidden'>
+                      <div className='absolute inset-[-2px] bg-linear-to-r from-primary/20 via-primary/10 to-primary animate-spin-slow rounded-2xl blur-md'></div>
 
-                  </div>
+                    </div>
+                  </FadeIn>
 
                   {/* Image */}
 
@@ -145,6 +147,14 @@ const Hero = () => {
 
                         <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer'>
                           <SiGooglegemini className='w-full h-full text-primary'/>
+                        </div>
+
+                        <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer'>
+                          <SiPostman className='w-full h-full text-primary'/>
+                        </div>
+
+                        <div className='w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer'>
+                          <SiGithub className='w-full h-full text-primary'/>
                         </div>
 
                       </div>
