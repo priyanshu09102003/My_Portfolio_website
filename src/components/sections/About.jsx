@@ -196,21 +196,22 @@ const About = () => {
 
                 </div>
 
-                <div className="">
-                  <div className=""></div>
-                  <div className="">
-                    <div className="">
+                <div className="col-span-2 relative group">
+                  <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+                  <div className="relative bg-white/5 border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full cursor-pointer">
+                    
+                    <div className="grid grid-cols-3 gap-6 text-center">
                       <div>
-                        <div className="">100%</div>
-                        <div className="">Project Completion Rate</div>
+                        <div className="text-2xl font-bold text-primary mb-1">100%</div>
+                        <div className="text-xs text-white/60">Project Completion Rate</div>
                       </div>
                       <div>
-                        <div className="">Clean</div>
-                        <div className="">Git Commit History</div>
+                        <div className="text-2xl font-bold text-primary mb-1">Clean</div>
+                        <div className="text-xs text-white/60">Git Commit History</div>
                       </div>
                       <div>
-                        <div className="">Fast</div>
-                        <div className="">Delivery Time</div>
+                        <div className="text-2xl font-bold text-primary mb-1">Fast</div>
+                        <div className="text-xs text-white/60">Delivery Time</div>
                       </div>
                     </div>
                   </div>
