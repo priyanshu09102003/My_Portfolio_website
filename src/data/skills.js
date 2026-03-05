@@ -98,4 +98,10 @@ export const skills = [
     icon: 'Sparkles',
     level: 'Intermediate',
   },
+  {
+      id: 17,
+      name: 'CNN',
+      icon: 'Network',
+      level: 'Intermediate',
+  },
 ];
