@@ -74,12 +74,14 @@ const Education = () => {
 
         {/* Skills grid */}
         <section id='skills' className='relative py-20 bg-black overflow-hidden'>
+            <RadialGradient variant='left' />
+
             <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <FadeIn delay={750}>
                     <div className='flex flex-col items-center gap-8'>
                         <div className='text-center'>
                             <h3 className='text-3xl lg:text-5xl font-normal text-white mb-2'>
-                                Tech Stack & Expertise
+                                Tech Stack
                             </h3>
                             <p className='text-sm text-white/60 '>
                                 The tools and technologies I mostly rely on to build, ship and scale production-ready applications.

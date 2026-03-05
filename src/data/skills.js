@@ -39,7 +39,7 @@ export const skills = [
     id: 7,
     name: 'Git & GitHub',
     icon: 'GitBranch',
-    level: 'Advanced',
+    level: 'Expert',
   },
   {
     id: 8,
@@ -70,7 +70,7 @@ export const skills = [
     id: 12,
     name: 'Prisma',
     icon: 'Layers',
-    level: 'Intermediate',
+    level: 'Advanced',
   },
   // Tools & Deployment
   {

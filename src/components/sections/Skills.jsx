@@ -2,6 +2,8 @@ import React from 'react'
 import { skills } from '@/data/skills'
 import * as Icons from 'lucide-react'
 import FadeIn from '../animations/FadeIn'
+import TitleHeader from './TitleHeader'
+
 
 const Skills = () => {
     const skillCategories = {
@@ -36,7 +38,7 @@ const Skills = () => {
 
     // Get Proficiency percentage
 
-    const getProficiencyPercentage = (level) => {
+    const getProficiencyLevel = (level) => {
         const levels = {
             'Expert': 95,
             'Advanced': 80,
@@ -58,9 +60,98 @@ const Skills = () => {
 
 
   return (
-    <div>
-      Skills
-    </div>
+    <section className='relative py-15 bg-black overflow-hidden'>
+
+        {/* Animated Background */}
+
+        <div className='absolute inset-0 overflow-hidden'>
+            <div className='absolute left-0 w-96 h-96 bg-primary/15 rounded-full blur-3xl opacity-50'/>
+            <div className='absolute right-0 w-96 h-96 bg-primary/15 rounded-full blur-3xl opacity-50'/>
+        </div>
+
+        <div className='relative z-10 max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8'>
+
+            <FadeIn delay={100}>
+                <TitleHeader title="Skills & Technologies" sub="My Expertise" />
+
+                <p className='text-lg text-white/60 mx-auto text-center mt-6'>
+                    A comprehensive breakdown of my technical proficiencies across every layer I work upon.
+                </p>
+
+            </FadeIn>
+
+            {/* Skills Categories */}
+
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12'>
+                {Object.entries(skillCategories).map(([category, categorySkills], categoryIndex) => (
+                    <FadeIn key={category} delay={categoryIndex * 100}>
+
+                        <div className='relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 group hover:cursor-pointer'>
+                            <div className='flex items-center gap-3 mb-6 pb-4 border-b border-white/10 '>
+                                <div className='w-1 h-8 bg-linear-to-b from-primary/60 to-primary/40 rounded-full'></div>
+
+                                <h3 className='text-xl font-medium text-white'>{category}</h3>
+                            </div>
+
+                            {/* Skills List */}
+
+                            <div className='space-y-5'>
+                                {categorySkills.map((skill, skillIndex) => {
+                                    const IconComponent = Icons[skill.icon] || Icons.Code2;
+                                    const proficiency = getProficiencyLevel(skill.level);
+
+                                    return(
+                                        <div key={skill.id} className='space-y-2'>
+
+                                            <div className='flex items-center justify-between'>
+
+                                                <div className='flex items-center gap-3'>
+
+                                                    <div className='p-2 bg-white/5 rounded-lg'>
+
+                                                      <IconComponent className="w-4 h-4 text-primary" />  
+                                                    </div>
+
+                                                    <div>
+
+                                                        <div className='text-sm font-medium text-white'>
+                                                            {skill.name}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <span className={`text-xs px-2 py-1 rounded-full border ${getLevelColor(skill.level)}`}>
+
+                                                    {skill.level}
+
+                                                </span>
+
+                                            </div>
+
+                                            <div className='relative h-1.5 bg-white/5 rounded-full overflow-hidden'>
+
+                                                <div className='absolute top-0 left-0 h-full bg-linear-to-r from-primary/10 to-primary/80 rounded-full transition-all duration-1000 ease-out' style={{width: `${proficiency}%`}}>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    )
+                                })}
+                            </div>
+
+                            {/* Hover Glow Effect */}
+
+                            <div className='absolute inset-0 bg-linear-to-br from-primary/0 to-primary/5 group-hover:from-primary/5 group-hover:to-primary/5 rounded-2xl transition-all durtion-300 pointer-events-none'>  </div>
+                        </div>
+                         
+                    </FadeIn>
+                ))}
+            </div>
+
+        </div>
+
+    </section>
   )
 }
 
