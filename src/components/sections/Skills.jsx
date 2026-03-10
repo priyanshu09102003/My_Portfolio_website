@@ -24,15 +24,19 @@ const Skills = () => {
         skills.find(s => s.name === 'MongoDB'),
         skills.find(s => s.name === 'Prisma'),
     ].filter(Boolean),
-    'Tools & Deployment': [
+    'AI & ML': [
+        skills.find(s => s.name === 'Generative AI'),
+        skills.find(s => s.name === 'CNN'),
+    ].filter(Boolean),
+    'Designing & Wireframes': [
+        skills.find(s => s.name === 'Canva'),
+        skills.find(s => s.name === 'Figma'),
+    ].filter(Boolean),
+     'Tools & Deployment': [
         skills.find(s => s.name === 'Git & GitHub'),
         skills.find(s => s.name === 'Postman'),
         skills.find(s => s.name === 'Vercel'),
         skills.find(s => s.name === 'AWS'),
-    ].filter(Boolean),
-    'AI & ML': [
-        skills.find(s => s.name === 'Generative AI'),
-        skills.find(s => s.name === 'CNN'),
     ].filter(Boolean),
     };
 

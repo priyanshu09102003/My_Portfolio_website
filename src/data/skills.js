@@ -104,4 +104,18 @@ export const skills = [
       icon: 'Network',
       level: 'Intermediate',
   },
+
+  //Designing and Wireframes
+  {
+    id: 18,
+    name: 'Canva',
+    icon: 'Palette',
+    level: 'Expert',
+  },
+  {
+      id: 19,
+      name: 'Figma',
+      icon: 'Palette',
+      level: 'Intermediate',
+  },
 ];

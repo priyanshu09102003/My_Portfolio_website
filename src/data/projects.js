@@ -11,4 +11,4 @@ export const projects = [
     }
 ]
 
-export const categories = ["All", "Fullstack(GenAI)", "Team Ventures", "Frontend & UI", "Neural Networks"];
+export const categories = ["All", "Fullstack & AI", "Team Ventures", "Frontend & UI", "Neural Networks"];
