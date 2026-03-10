@@ -83,7 +83,7 @@ const Education = () => {
                             <h3 className='text-3xl lg:text-5xl font-normal text-white mb-2'>
                                 Tech Stack
                             </h3>
-                            <p className='text-sm text-white/60 '>
+                            <p className='text-lg text-white/60 mx-w-2xl text-center mt-6'>
                                 The tools and technologies I mostly rely on to build, ship and scale production-ready applications.
                             </p>
                         </div>
