@@ -112,7 +112,7 @@ const Projects = () => {
                             </div>
 
                             {activeCategory === category && (
-                                <div className='absolute inset-0 rounded-full bg-primary/70 blur-xl opacity-50 -z-10'/>
+                                <div className='absolute inset-0 rounded-full bg-primary/40 blur-xl opacity-50 -z-10'/>
                             )}
 
 
@@ -132,12 +132,12 @@ const Projects = () => {
                         className='overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar'
                     >
 
-                        <div className=''>
+                        <div className='flex gap-6 pb-4'>
 
                             {filteredProjects.map((project, index) => (
                                 <div
                                     key={project.id}
-                                    className=''
+                                    className='w-full mid:w-[calc(50%-12px)] lg:w-[calc(33.333% - 16px)] shrink-0 snap-start'
                                 >
 
                                     <ProjectCard />
@@ -156,22 +156,23 @@ const Projects = () => {
                             <button
                                 onClick={prevSlide}
                                 disabled={currentIndex === 0}
-                                className=''
+                                className='flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border-white/20 rounded-full hover:bg-white/20 hover:cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10'
                                 aria-label='Previous Projects'
                             >
 
-                                <ChevronLeft className='' />
+                                <ChevronLeft className='w-8 h-8 text-white' />
 
                             </button>
 
                             <button
                                 onClick={nextSlide}
                                 disabled={currentIndex >= filteredProjects.length - 3}
-                                className=''
+                                className='flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 lg:-translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border-white/20 rounded-full hover:bg-white/20 hover:cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10'
+
                                 aria-label='Next Projects'
                             >
 
-                                <ChevronRight className='' />
+                                <ChevronRight className='w-8 h-8 text-white' />
 
                             </button>
 
@@ -182,7 +183,7 @@ const Projects = () => {
                     {/* Navigation Dots */}
 
                     {filteredProjects.length>3 && (
-                        <div className=''>
+                        <div className='flex items-center justify-center gap-2 mt-10'>
                             {Array.from({length: Math.max(0, filteredProjects.length - 2)}).map((_, index) => (
 
                                 <button
