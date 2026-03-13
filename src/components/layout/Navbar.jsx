@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Code, Menu, X} from 'lucide-react'
 import {NAV_LINKS, PERSONAL_INFO} from '../../utils/constants'
 import { useScrollSpy , scrollToSection } from '@/hooks/useScrollSpy'
+import { SiLinkedin } from 'react-icons/si'
 
 const Navbar = () => {
 
@@ -68,11 +69,14 @@ const Navbar = () => {
 
           <div className='hidden md:flex items-center gap-2'>
 
-              <button onClick={() => handleNavClick('contact')}
+              <button onClick={() => window.open('https://www.linkedin.com/in/priyanshu-paul-59221228a/')}
                 className='px-4 py-2 cursor-pointer bg-white text-[#212121] font-medium rounded-[17px] border-white hover:bg-white/90 transition-all duration-300'
               >
 
-                Connect
+                <span className='flex items-center gap-2'>
+                  <SiLinkedin className='w-4 h-4' />
+                  Connect
+                </span>
                 
               </button>
 
@@ -116,12 +120,15 @@ const Navbar = () => {
           ))}
 
           <button
-            onClick={() => handleNavClick('contact')}
+            onClick={() => window.open('https://www.linkedin.com/in/priyanshu-paul-59221228a/', '_blank')}
             className='w-full px-7 py-3.5 bg-white text-[#212121] font-medium text-base rounded-[17px]
             border border-white hover:bg-white/90 transition-all duration-300 mt-2'
           >
 
-            Connect
+            <span className='flex items-center justify-center gap-2'>
+              <SiLinkedin className='w-4 h-4' />
+              Connect
+            </span>
 
           </button>
         </div>
