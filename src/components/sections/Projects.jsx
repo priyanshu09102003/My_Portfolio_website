@@ -61,7 +61,7 @@ const Projects = () => {
             'All': Target,
             'Fullstack & AI': Globe,
             'Team Ventures': Group,
-            'Frontend & UI': Palette,
+            'Frontend': Palette,
             'Neural Networks': Workflow
         };
 
@@ -117,7 +117,7 @@ const Projects = () => {
                             </div>
 
                             {activeCategory === category && (
-                                <div className='absolute inset-0 rounded-full bg-primary/40 blur-xl opacity-50 -z-10'/>
+                                <div className='absolute inset-0 rounded-full bg-primary/60 blur-xl opacity-50 -z-10'/>
                             )}
 
 
