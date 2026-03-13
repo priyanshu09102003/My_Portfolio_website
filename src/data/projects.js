@@ -1,7 +1,7 @@
 export const projects = [
     {
         id: 1,
-        title: "ABCD",
+        title: "CodePilot: An AI Code Editor",
         description: "ABCD",
         image: '/images/projects/banner.png',
         category: "Fullstack & AI",
@@ -11,7 +11,7 @@ export const projects = [
     },
     {
         id: 2,
-        title: "PQRS",
+        title: "FluxorAI: An AI-automation Platform",
         description: "PQRS",
         image: '/images/projects/banner.png',
         category: "Fullstack & AI",
