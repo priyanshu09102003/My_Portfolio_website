@@ -2,7 +2,8 @@ export const PERSONAL_INFO = {
     name: "Priyanshu Paul",
     title: "Full Stack Developer & GenAI Enthusiast",
     email: "paulpriyanshu704@gmail.com",
-    tagline: "Crafting scalable web applications and AI-powered solutions with modern technologies.",
+    footerTagline: "Building scalable products at lightning speed.",
+    location: "Guwahati, Assam",
     resume: "/resume.pdf",
     bio: [
         "Computer Science undergraduate specializing in AI & ML with strong full-stack development expertise.",
@@ -26,7 +27,8 @@ export const ABOUT_STATS = [
 
 export const SOCIAL_LINKS = {
     github: 'https://github.com/priyanshu09102003',
-    linkedin: 'https://www.linkedin.com/in/priyanshu-paul-59221228a/'
+    linkedin: 'https://www.linkedin.com/in/priyanshu-paul-59221228a/',
+    whatsapp: "https://wa.me/916900507916",
 }
 
 export const NAV_LINKS = [

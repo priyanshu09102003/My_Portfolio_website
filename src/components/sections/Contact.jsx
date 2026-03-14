@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SiGmail, SiGithub, SiLinkedin } from 'react-icons/si'
+import { SiGmail, SiGithub, SiLinkedin, SiWhatsapp } from 'react-icons/si'
 import { MapPin, Send, MessageSquare } from 'lucide-react'
 import { PERSONAL_INFO , SOCIAL_LINKS } from '@/utils/constants'
 import emailjs from '@emailjs/browser'
@@ -64,7 +64,8 @@ const Contact = () => {
 
     const socialIcons = {
         github: SiGithub,
-        linkedin: SiLinkedin
+        linkedin: SiLinkedin,
+        whatsapp: SiWhatsapp
     }
   return (
     <section id='contact' className='relative py-20 bg-black overflow-hidden'>
@@ -193,7 +194,7 @@ const Contact = () => {
                             </div>
 
                            <div className='relative z-10'>
-                            <p className='text-sm text-white/50 mt-3'>You can also find me at : </p>
+                            <p className='text-sm text-white/50 mt-3'>You can also find me on : </p>
                             <div className='flex gap-4 mt-3'>
                                 {Object.entries(SOCIAL_LINKS).slice(0, 3).map(([platform, url]) => {
                                     const Icon = socialIcons[platform]
