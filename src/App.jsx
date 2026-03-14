@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero'
 import About from './components/sections/About'
@@ -10,11 +10,28 @@ import Contact from './components/sections/Contact'
 import Footer from './components/sections/Footer'
 
 import { MessageCircle } from 'lucide-react'
-import FadeIn from './components/animations/FadeIn'
+import Lenis from 'lenis'
 import { useState } from 'react'
 
 const App = () => {
   const [chatOpen, setChatOpen] = useState(false);
+
+  useEffect(() => {
+      const lenis = new Lenis({
+          duration: 0.8,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smooth: true,
+      });
+
+      function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      return () => lenis.destroy();
+  }, []);
   return (
     <div className='min-h-screen bg-black'>
       <Navbar/>
