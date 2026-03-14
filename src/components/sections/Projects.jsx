@@ -14,6 +14,18 @@ const Projects = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollContainerRef = useRef(null);
 
+    const handleScroll = () => {
+        if (scrollContainerRef.current) {
+            const container = scrollContainerRef.current;
+            const isMobile = window.innerWidth < 1024;
+            const cardWidth = isMobile 
+                ? container.offsetWidth 
+                : container.offsetWidth / 3;
+            const newIndex = Math.round(container.scrollLeft / cardWidth);
+            setCurrentIndex(newIndex);
+        }
+    };
+
     const filteredProjects = activeCategory === "All"
         ?projects
         :projects.filter(project => project.category === activeCategory);
@@ -134,6 +146,7 @@ const Projects = () => {
 
                     <div
                         ref={scrollContainerRef}
+                        onScroll={handleScroll}
                         className='overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar'
                     >
 
@@ -161,7 +174,7 @@ const Projects = () => {
                             <button
                                 onClick={prevSlide}
                                 disabled={currentIndex === 0}
-                                className='flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border-white/20 rounded-full hover:bg-white/20 hover:cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10'
+                                className='hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border-white/20 rounded-full hover:bg-white/20 hover:cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10'
                                 aria-label='Previous Projects'
                             >
 
@@ -172,7 +185,7 @@ const Projects = () => {
                             <button
                                 onClick={nextSlide}
                                 disabled={currentIndex >= filteredProjects.length - (window.innerWidth < 1024 ? 1 : 3)}
-                                className='flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 lg:translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border-white/20 rounded-full hover:bg-white/20 hover:cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10'
+                                className='hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 lg:translate-x-4 items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-sm border-white/20 rounded-full hover:bg-white/20 hover:cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10'
 
                                 aria-label='Next Projects'
                             >
