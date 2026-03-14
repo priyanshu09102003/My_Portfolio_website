@@ -9,7 +9,12 @@ import Services from './components/sections/Services'
 import Contact from './components/sections/Contact'
 import Footer from './components/sections/Footer'
 
+import { MessageCircle } from 'lucide-react'
+import FadeIn from './components/animations/FadeIn'
+import { useState } from 'react'
+
 const App = () => {
+  const [chatOpen, setChatOpen] = useState(false);
   return (
     <div className='min-h-screen bg-black'>
       <Navbar/>
@@ -25,6 +30,14 @@ const App = () => {
       </main>
 
       <Footer />
+
+      <button
+          onClick={() => setChatOpen(!chatOpen)}
+          className='fixed bottom-6 right-6 z-[9999] w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-2xl shadow-blue-500/40 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:cursor-pointer'
+          aria-label='Talk to Assistant'
+      >
+          <MessageCircle className='w-6 h-6' />
+      </button>
     </div>
   )
 }
