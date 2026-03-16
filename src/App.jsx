@@ -36,9 +36,11 @@ const App = () => {
 
   const handleLoaderComplete = () => {
     setLoading(false);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => setShowContent(true));
-    });
+    setTimeout(() => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setShowContent(true));
+      });
+    }, 800); 
   };
 
   return (
