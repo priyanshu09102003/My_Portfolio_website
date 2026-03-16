@@ -32,21 +32,28 @@ const App = () => {
     return () => lenis.destroy();
   }, []);
 
-  // ✅ Load Chatbase script IMMEDIATELY on mount
-  // while preloader is still showing — so it's ready by the time user sees the site
   useEffect(() => {
+    if (!showContent) return
+
     window.chatbaseConfig = { chatbotId: "mNsGDixrCgQOBVjuF6Xpq" }
 
+    const preconnect = document.createElement('link')
+    preconnect.rel = 'preconnect'
+    preconnect.href = 'https://www.chatbase.co'
+    document.head.appendChild(preconnect)
+
+  
     const script = document.createElement('script')
     script.src = 'https://www.chatbase.co/embed.min.js'
     script.id = 'mNsGDixrCgQOBVjuF6Xpq'
-    script.async = true
+    script.async = true  // ✅ async is faster than defer
     document.body.appendChild(script)
 
     return () => {
       if (document.body.contains(script)) document.body.removeChild(script)
+      if (document.head.contains(preconnect)) document.head.removeChild(preconnect)
     }
-  }, []) // ✅ Empty array — runs on mount, not waiting for showContent
+  }, [showContent])
 
   const handleLoaderComplete = () => {
     setLoading(false);
@@ -73,6 +80,7 @@ const App = () => {
           <Contact />
         </main>
         <Footer />
+
         <div id="chatbase-widget" />
       </div>
     </div>
