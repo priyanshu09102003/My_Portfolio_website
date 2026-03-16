@@ -1,4 +1,4 @@
-import React, { useEffect , useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero'
 import About from './components/sections/About'
@@ -32,22 +32,25 @@ const App = () => {
     return () => lenis.destroy();
   }, []);
 
-  
   useEffect(() => {
     if (!showContent) return
 
     window.chatbaseConfig = { chatbotId: "mNsGDixrCgQOBVjuF6Xpq" }
 
+    const preconnect = document.createElement('link')
+    preconnect.rel = 'preconnect'
+    preconnect.href = 'https://www.chatbase.co'
+    document.head.appendChild(preconnect)
+
     const script = document.createElement('script')
     script.src = 'https://www.chatbase.co/embed.min.js'
     script.id = 'mNsGDixrCgQOBVjuF6Xpq'
-    script.defer = true
+    script.async = true  // ✅ async is faster than defer
     document.body.appendChild(script)
 
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
-      }
+      if (document.body.contains(script)) document.body.removeChild(script)
+      if (document.head.contains(preconnect)) document.head.removeChild(preconnect)
     }
   }, [showContent])
 
@@ -57,7 +60,7 @@ const App = () => {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => setShowContent(true));
       });
-    }, 800); 
+    }, 800);
   };
 
   return (
@@ -77,9 +80,7 @@ const App = () => {
         </main>
         <Footer />
 
-       
         <div id="chatbase-widget" />
-
       </div>
     </div>
   );
