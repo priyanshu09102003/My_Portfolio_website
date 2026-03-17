@@ -13,8 +13,12 @@ import Lenis from 'lenis'
 import Preloader from './components/animations/Preloader'
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-  const [showContent, setShowContent] = useState(false);
+  const [loading, setLoading] = useState(() => {
+    return sessionStorage.getItem('loaderShown') ? false : true
+  });
+  const [showContent, setShowContent] = useState(() => {
+    return sessionStorage.getItem('loaderShown') ? true : false
+  });
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -42,11 +46,10 @@ const App = () => {
     preconnect.href = 'https://www.chatbase.co'
     document.head.appendChild(preconnect)
 
-  
     const script = document.createElement('script')
     script.src = 'https://www.chatbase.co/embed.min.js'
     script.id = 'mNsGDixrCgQOBVjuF6Xpq'
-    script.async = true  // ✅ async is faster than defer
+    script.async = true
     document.body.appendChild(script)
 
     return () => {
@@ -56,6 +59,7 @@ const App = () => {
   }, [showContent])
 
   const handleLoaderComplete = () => {
+    sessionStorage.setItem('loaderShown', 'true')
     setLoading(false);
     setTimeout(() => {
       requestAnimationFrame(() => {

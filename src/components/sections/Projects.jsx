@@ -93,7 +93,7 @@ const Projects = () => {
 
         <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 
-            <FadeIn delay={100}>
+            <FadeIn delay={0}>
                 <TitleHeader sub="My Work" title="Featured Projects" />
                 <p className='text-lg text-white/60 mx-w-2xl text-center mt-6'>
                     A showcase of some of my best works spanning across different domains and tech stacks.
@@ -104,7 +104,7 @@ const Projects = () => {
 
             {/* Category Filter */}
 
-            <FadeIn delay={250}>
+            <FadeIn delay={50}>
                 <div className='flex flex-wrap justify-center gap-3 mb-16 mt-8'>
                     {categories.map((category) => (
                         <button
@@ -140,7 +140,7 @@ const Projects = () => {
 
             {/* Projects Carousel */}
 
-            <FadeIn delay={500}>
+            <FadeIn delay={0}>
 
                 <div className='relative'>
 
