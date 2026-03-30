@@ -109,7 +109,7 @@ const ProjectDetails = () => {
                         </button>
                         {activeSection === 'Description' && (
                             <div className='px-5 py-4 bg-black/20 border-t border-white/10'>
-                                <p className='text-white/70 text-sm leading-relaxed'>{ project.description}</p>
+                                <p className='text-white/70 text-sm leading-relaxed'>{ details.description}</p>
                             </div>
                         )}
                     </div>
