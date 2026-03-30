@@ -87,7 +87,106 @@ export const projectDetails = {
                 tech: "xterm.js",
                 reason: "Full-featured terminal emulator rendered in the browser, connected to the WebContainer process for real-time install logs, command execution, and dev server interaction."
             },
+
+            
+
+            
         ]
     },
+
+    2: {
+        title: "FluxorAI",
+        tagline: "A visual workflow automation platform that lets you build, automate, and deploy intelligent AI workflows through a drag-and-drop canvas — integrating multiple AI providers, smart triggers, messaging, and real-time execution monitoring.",
+        liveUrl: "https://fluxor-ai-automation.vercel.app/",
+        githubUrl: "https://github.com/priyanshu09102003/fluxorAI",
+        features: [
+            {
+                title: "Visual Drag-and-Drop Workflow Builder",
+                description: "Build complex automation workflows visually on a React Flow canvas with zoom, pan, minimap, auto-layout, and real-time WebSocket execution updates that animate nodes live as they run."
+            },
+            {
+                title: "Multi-Provider AI Nodes",
+                description: "Integrate OpenAI, Anthropic Claude, and Google Gemini 2.5 Flash directly into workflows. Each AI node supports dynamic prompt templates using variable syntax like {{trigger.input}}, with secure auto-loaded credentials."
+            },
+            {
+                title: "Smart Trigger Nodes",
+                description: "Start workflows from Webhook (HTTP POST/GET/PUT/DELETE), Google Form submissions via Apps Script OAuth, Stripe payment and subscription events, or a Manual trigger for testing and one-off runs."
+            },
+            {
+                title: "Messaging Integrations",
+                description: "Send automated notifications to Discord (rich embeds, mentions, file attachments) and Slack (Block Kit messages, thread replies, channel routing) using dynamic variable templating from upstream nodes."
+            },
+            {
+                title: "Variable & Templating System",
+                description: "Pass data between nodes with a type-safe variable system using {{nodeName.output}} dot-notation syntax. View live variable values during execution and access nested objects from any upstream node."
+            },
+            {
+                title: "Secure Credential Management",
+                description: "All AI provider API keys and OAuth tokens are encrypted at rest using Cryptr before storage in Neon PostgreSQL — never exposed client-side, with user-scoped isolation and seamless auto-injection at runtime."
+            },
+            {
+                title: "Reliable Background Execution with Inngest",
+                description: "Workflows run as durable Inngest background jobs with automatic retries, exponential backoff, step functions, and concurrency control — surviving server restarts and page refreshes without data loss."
+            },
+            {
+                title: "Execution History & AI Monitoring",
+                description: "Full audit trail of every workflow run with node-by-node logs, stack traces, variable inspection, and replay for failed runs. Sentry AI Monitoring tracks all LLM calls with token usage, latency, and cost attribution."
+            },
+            {
+                title: "SaaS Billing with Polar",
+                description: "1-month free trial (no card required) followed by a $15/month PRO plan. Powered by Polar with global currency support, automatic tax compliance, PDF invoice generation, and a full subscription management portal."
+            },
+        ],
+        techStack: [
+            {
+                tech: "Next.js 15",
+                reason: "Full-stack framework with App Router, Server Components, and API routes powering the entire SaaS — SSR for performance and clean separation between the visual canvas UI and the workflow execution backend."
+            },
+            {
+                tech: "React Flow",
+                reason: "The core of the visual builder — provides the interactive canvas with drag-and-drop nodes, edge connections, minimap, zoom/pan, and custom node rendering for all trigger, AI, and messaging node types."
+            },
+            {
+                tech: "Inngest",
+                reason: "Powers durable workflow execution as background jobs with automatic retries, step functions, sleep/delay support, and event-driven orchestration — ensuring reliable execution at scale even through failures."
+            },
+            {
+                tech: "tRPC",
+                reason: "End-to-end type-safe API layer between frontend and backend, eliminating runtime errors in API communication and providing automatic TypeScript types from server to client with no code generation."
+            },
+            {
+                tech: "Better Auth",
+                reason: "Modern authentication with email/password, GitHub OAuth, and Google OAuth — providing session management, role-based access control, and type-safe auth APIs across the application."
+            },
+            {
+                tech: "Neon PostgreSQL + Prisma",
+                reason: "Serverless autoscaling Postgres (Neon) for the database layer, with Prisma ORM providing type-safe queries, auto-generated TypeScript types, and schema-driven migrations for all workflow and user data."
+            },
+            {
+                tech: "WebSockets",
+                reason: "Enables real-time workflow execution feedback — nodes animate on the canvas as they run, variable values update live, and status badges change instantly without polling."
+            },
+            {
+                tech: "Cryptr",
+                reason: "Encrypts all AI provider API keys and OAuth tokens before storing in the database, ensuring credentials are never in plain text and are only decrypted server-side during workflow execution."
+            },
+            {
+                tech: "OpenAI / Anthropic / Gemini SDKs",
+                reason: "Official TypeScript SDKs for all three AI providers — enabling text generation, streaming, embeddings, and multimodal processing within workflow AI nodes, each with configurable prompts and parameters."
+            },
+            {
+                tech: "Polar",
+                reason: "SaaS payment and subscription infrastructure handling recurring billing, global currency conversion, automatic tax compliance (VAT/GST), PDF invoice generation, and the full customer billing portal."
+            },
+            {
+                tech: "Sentry + AI Monitoring",
+                reason: "Application error tracking with full stack traces and breadcrumbs, plus specialized LLM monitoring that logs every AI API call with token usage, latency, cost attribution, and AI-suggested fix recommendations."
+            },
+            {
+                tech: "TailwindCSS + Shadcn UI",
+                reason: "Tailwind utility classes for rapid, consistent UI development; Shadcn UI provides accessible, Radix-based components (dialogs, dropdowns, forms) fully customized to match the platform's visual design."
+            },
+        ]
+    }
     
 }

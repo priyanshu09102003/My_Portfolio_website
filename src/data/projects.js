@@ -13,7 +13,7 @@ export const projects = [
         id: 2,
         title: "FluxorAI: An AI-automation Platform",
         description: "A visual AI-automation platform to build, automate, and deploy intelligent AI workflows at scale.",
-        image: '/images/projects/codepilot.png',
+        image: '/images/projects/fluxorai.png',
         category: "Fullstack & AI",
         technologies: ['React', 'Node.js'],
         demoUrl: 'https://codepilot-ai-cloud-ide.vercel.app/',
