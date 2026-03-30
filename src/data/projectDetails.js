@@ -1,7 +1,8 @@
 export const projectDetails = {
     1: {
         title: "CodePilot",
-        tagline: "A browser-based, AI-powered cloud code editor — build, preview, and ship with an intelligent agentic AI layer, live WebContainers preview, and full GitHub integration.",
+        tagline: "AI-powered cloud IDE — like Cursor, but as a SaaS.",
+        description: "CodePilot is a full-stack, browser-based code editor powered by an autonomous AI agent built with Inngest AgentKit. It combines a professional IDE experience — syntax highlighting, tabbed file switcher, ghost text completions, and Cmd+K quick edits — with a live in-browser preview via WebContainers, deep GitHub import/export, Firecrawl-powered URL scraping for real-time docs injection, and a complete SaaS billing layer. The AI agent reasons over your entire file tree and conversation history to autonomously create, edit, and delete files — all while you watch the changes reflect live.",
         liveUrl: "https://codepilot-ai-cloud-ide.vercel.app",
         githubUrl: "https://github.com/priyanshu09102003/codepilot-AI_CLOUD_IDE",
         features: [
@@ -87,16 +88,12 @@ export const projectDetails = {
                 tech: "xterm.js",
                 reason: "Full-featured terminal emulator rendered in the browser, connected to the WebContainer process for real-time install logs, command execution, and dev server interaction."
             },
-
-            
-
-            
         ]
     },
-
     2: {
         title: "FluxorAI",
-        tagline: "A visual workflow automation platform that lets you build, automate, and deploy intelligent AI workflows through a drag-and-drop canvas — integrating multiple AI providers, smart triggers, messaging, and real-time execution monitoring.",
+        tagline: "Visual AI workflow automation — build and ship intelligent pipelines without code.",
+        description: "FluxorAI is a production-ready SaaS platform for building intelligent automation workflows through a drag-and-drop canvas powered by React Flow. Connect trigger nodes (Webhook, Google Forms, Stripe, Manual) to AI nodes (OpenAI, Claude, Gemini) and messaging nodes (Discord, Slack) with a type-safe variable templating system that passes data seamlessly between steps. Workflows run as durable Inngest background jobs with automatic retries and real-time WebSocket updates that animate the canvas live. All credentials are encrypted at rest with Cryptr, every LLM call is tracked via Sentry AI Monitoring, and the full SaaS billing layer is powered by Polar — with a 1-month free trial and global tax compliance out of the box.",
         liveUrl: "https://fluxor-ai-automation.vercel.app/",
         githubUrl: "https://github.com/priyanshu09102003/fluxorAI",
         features: [
@@ -188,5 +185,4 @@ export const projectDetails = {
             },
         ]
     }
-    
 }

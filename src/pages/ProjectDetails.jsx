@@ -61,7 +61,7 @@ const ProjectDetails = () => {
                             {project.title}
                         </h1>
                         <p className='text-white/60 text-sm md:text-base leading-relaxed mb-6'>
-                            {details?.tagline || project.description}
+                            {details.tagline}
                         </p>
                         <div className='flex flex-wrap gap-3'>
                             {project.demoUrl && (
@@ -109,7 +109,7 @@ const ProjectDetails = () => {
                         </button>
                         {activeSection === 'Description' && (
                             <div className='px-5 py-4 bg-black/20 border-t border-white/10'>
-                                <p className='text-white/70 text-sm leading-relaxed'>{details?.tagline || project.description}</p>
+                                <p className='text-white/70 text-sm leading-relaxed'>{ project.description}</p>
                             </div>
                         )}
                     </div>
