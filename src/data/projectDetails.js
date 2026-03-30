@@ -184,5 +184,85 @@ export const projectDetails = {
                 reason: "Tailwind utility classes for rapid, consistent UI development; Shadcn UI provides accessible, Radix-based components (dialogs, dropdowns, forms) fully customized to match the platform's visual design."
             },
         ]
+    },
+
+     3: {
+        title: "Signalist",
+        tagline: "Real-time market intelligence for stocks & crypto — all in one place.",
+        description: "Signalist is a comprehensive market intelligence platform for stocks and cryptocurrencies. The dashboard combines live sector heatmaps, TradingView candlestick charts, real-time financial tables, and top market news — all powered by Finnhub and CoinGecko APIs. A global ⌘K search gives instant access to any stock or coin, with detailed pages showing OHLCV charts, technical analysis gauges, and full fundamental data (P/E, margins, cash flow, ROE). Add any stock to your watchlist and Inngest background workflows kick in automatically — running daily cron jobs that fetch live data, generate AI-powered buy/sell insights, and deliver personalized email reports via Nodemailer. The crypto section covers trending coins, top categories (DeFi, L1, stablecoins), exchange listings, and a multi-currency price converter.",
+        liveUrl: "https://signalist-tracker.vercel.app/",
+        githubUrl: "https://github.com/priyanshu09102003/Signalist_Stock_Market_Application",
+        features: [
+            {
+                title: "Real-Time Stock & Crypto Dashboard",
+                description: "Live market overview with sector performance charts, a color-coded heatmap across Electronic Technology, Health Tech, Finance, and more, financial tables with real-time price/change/volume data, and top market-moving news — all updating continuously via Finnhub and CoinGecko."
+            },
+            {
+                title: "Global Search (⌘K)",
+                description: "Instant search modal accessible from anywhere in the app. Shows the top 10 most popular global stocks by default and returns real-time results as you type, with company name, ticker, stock type, and a direct link to the full details page."
+            },
+            {
+                title: "Professional Stock Details Page",
+                description: "Per-stock pages with interactive TradingView candlestick charts across multiple timeframes (1m, 5m, 30m, 1h, 1d), a technical analysis sentiment gauge showing buy/sell/neutral signal counts, and a full fundamentals panel — valuation ratios, profitability margins, efficiency ratios, and cash flow data from Finnhub."
+            },
+            {
+                title: "AI-Powered Watchlist Alerts",
+                description: "Add any stock to your watchlist and Inngest automatically activates daily cron workflows — fetching live Finnhub data each morning, generating AI-driven buy/sell signal insights, and emailing a personalized market report via Nodemailer."
+            },
+            {
+                title: "Cryptocurrency Intelligence",
+                description: "Dedicated crypto dashboard with TradingView live charts for thousands of coins, trending assets, top categories (DeFi, L1, stablecoins), exchange listings, a coin search, and a real-time multi-currency price converter — all powered by CoinGecko."
+            },
+            {
+                title: "Smart Onboarding & Email Notifications",
+                description: "On signup, Better Auth triggers an Inngest onboarding workflow that sends a personalized welcome email via Nodemailer tailored to the user's chosen investment preferences and markets of interest."
+            },
+            {
+                title: "Secure Authentication & Personalization",
+                description: "Better Auth handles email/password login and OAuth (GitHub, Google) with session management and MFA support. Watchlists, alert configs, and preferences are persisted per user in MongoDB and sync across devices."
+            },
+        ],
+        techStack: [
+            {
+                tech: "Next.js",
+                reason: "Full-stack framework providing SSR, App Router, and API routes — powering the dashboard UI, stock/crypto data fetching, and the Inngest workflow endpoints from a single codebase."
+            },
+            {
+                tech: "TypeScript",
+                reason: "End-to-end type safety across API integrations, database models, and React components — critical for reliably handling complex financial data structures from multiple external APIs."
+            },
+            {
+                tech: "Finnhub API",
+                reason: "Primary data source for all stock market data — live prices, OHLCV data, sector fundamentals, valuation metrics, earnings, and financial news, powering the dashboard, stock detail pages, and watchlist workflows."
+            },
+            {
+                tech: "CoinGecko API",
+                reason: "Comprehensive crypto data source providing real-time prices, market cap, 24h volume, trending coins, category breakdowns, exchange listings, and currency conversion rates for the crypto dashboard."
+            },
+            {
+                tech: "TradingView Widgets",
+                reason: "Industry-standard financial charting library rendering interactive candlestick charts with OHLCV data, technical indicators, and multi-timeframe support — used across both the stock and crypto detail pages."
+            },
+            {
+                tech: "Inngest",
+                reason: "Powers all background automation — daily cron jobs that fetch watchlist stock data, generate AI-powered buy/sell insights, trigger alert emails, and run the personalized onboarding workflow on new signups."
+            },
+            {
+                tech: "Nodemailer",
+                reason: "Handles all transactional email delivery via SMTP/OAuth2 — sending personalized welcome emails on signup and daily AI-generated watchlist insight reports to users."
+            },
+            {
+                tech: "Better Auth",
+                reason: "Manages authentication with email/password, GitHub OAuth, Google OAuth, MFA, and session handling — with user preferences and watchlist data scoped securely per account."
+            },
+            {
+                tech: "MongoDB",
+                reason: "Flexible NoSQL database storing user watchlists, alert configurations, session data, and preferences in JSON-like documents — well-suited to the dynamic, user-specific data structures of the platform."
+            },
+            {
+                tech: "Shadcn UI + TailwindCSS",
+                reason: "Shadcn provides accessible, customizable components (tables, modals, dropdowns) while Tailwind handles all utility-first styling — enabling the clean, data-dense financial dashboard aesthetic."
+            },
+        ]
     }
 }

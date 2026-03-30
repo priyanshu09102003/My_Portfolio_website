@@ -23,7 +23,7 @@ export const projects = [
         id: 3,
         title: "LMN",
         description: "LMN",
-        image: '/images/projects/codepilot.png',
+        image: '/images/projects/signalist.png',
         category: "Fullstack & AI",
         technologies: ['React', 'Node.js'],
         demoUrl: 'https://codepilot-ai-cloud-ide.vercel.app/',
