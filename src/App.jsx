@@ -58,19 +58,8 @@ const App = () => {
     }
   }, [showContent])
 
-  const handleLoaderComplete = () => {
-    sessionStorage.setItem('loaderShown', 'true')
-    setLoading(false);
-    setTimeout(() => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setShowContent(true));
-      });
-    }, 800);
-  };
-
   return (
     <div className='min-h-screen bg-black'>
-      {loading && <Preloader onComplete={handleLoaderComplete} />}
 
       <div style={{ opacity: showContent ? 1 : 0, transition: 'opacity 0.8s ease' }}>
         <Navbar />

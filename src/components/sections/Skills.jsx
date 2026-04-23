@@ -3,7 +3,7 @@ import { skills } from '@/data/skills'
 import * as Icons from 'lucide-react'
 import FadeIn from '../animations/FadeIn'
 import TitleHeader from './TitleHeader'
-import CodingStats from './CodingStats'
+
 
 
 const Skills = () => {
@@ -156,9 +156,6 @@ const Skills = () => {
             </div>
 
         </div>
-
-        <CodingStats />
-
     </section>
   )
 }
