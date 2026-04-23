@@ -100,20 +100,26 @@ export const skills = [
   },
   {
       id: 17,
-      name: 'CNN',
+      name: 'Hugging Face',
       icon: 'Network',
+      level: 'Intermediate',
+  },
+  {
+      id: 18,
+      name: 'Machine Learning',
+      icon: 'Layers',
       level: 'Intermediate',
   },
 
   //Designing and Wireframes
   {
-    id: 18,
+    id: 19,
     name: 'Canva',
     icon: 'Palette',
     level: 'Expert',
   },
   {
-      id: 19,
+      id: 20,
       name: 'Figma',
       icon: 'Palette',
       level: 'Intermediate',

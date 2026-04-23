@@ -3,6 +3,7 @@ import { skills } from '@/data/skills'
 import * as Icons from 'lucide-react'
 import FadeIn from '../animations/FadeIn'
 import TitleHeader from './TitleHeader'
+import CodingStats from './CodingStats'
 
 
 const Skills = () => {
@@ -26,7 +27,8 @@ const Skills = () => {
     ].filter(Boolean),
     'AI & ML': [
         skills.find(s => s.name === 'Generative AI'),
-        skills.find(s => s.name === 'CNN'),
+        skills.find(s => s.name === 'Hugging Face'),
+        skills.find(s => s.name === 'Machine Learning'),
     ].filter(Boolean),
     'Designing & Wireframes': [
         skills.find(s => s.name === 'Canva'),
@@ -154,6 +156,8 @@ const Skills = () => {
             </div>
 
         </div>
+
+        <CodingStats />
 
     </section>
   )
