@@ -74,7 +74,7 @@ const Projects = () => {
             'Fullstack & AI': Globe,
             'Team Ventures': Group,
             'Frontend': Palette,
-            'Neural Networks': Workflow
+            'GenAI': Workflow
         };
 
 

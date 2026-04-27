@@ -92,7 +92,7 @@ export const projectDetails = {
     },
     2: {
         title: "FluxorAI",
-        tagline: "Visual AI workflow automation — build and ship intelligent pipelines without code.",
+        tagline: "A visual AI-automation platform to build, automate, and deploy intelligent AI workflows at scale.",
         description: "FluxorAI is a production-ready SaaS platform for building intelligent automation workflows through a drag-and-drop canvas powered by React Flow. Connect trigger nodes (Webhook, Google Forms, Stripe, Manual) to AI nodes (OpenAI, Claude, Gemini) and messaging nodes (Discord, Slack) with a type-safe variable templating system that passes data seamlessly between steps. Workflows run as durable Inngest background jobs with automatic retries and real-time WebSocket updates that animate the canvas live. All credentials are encrypted at rest with Cryptr, every LLM call is tracked via Sentry AI Monitoring, and the full SaaS billing layer is powered by Polar — with a 1-month free trial and global tax compliance out of the box.",
         liveUrl: "https://fluxor-ai-automation.vercel.app/",
         githubUrl: "https://github.com/priyanshu09102003/fluxorAI",
@@ -264,5 +264,113 @@ export const projectDetails = {
                 reason: "Shadcn provides accessible, customizable components (tables, modals, dropdowns) while Tailwind handles all utility-first styling — enabling the clean, data-dense financial dashboard aesthetic."
             },
         ]
-    }
+    },
+
+    5: {
+    title: "DeepScope",
+    tagline: "AI-powered genomic variant analysis — predict DNA mutation pathogenicity with a 7B genomic language model.",
+    description: "DeepScope is a full-stack biomedical web application built by me and my team as a research project, aimed to make state-of-the-art genomic intelligence accessible through a modern browser-based interface. The platform was developed across two phases. Phase I established a molecular design and drug discovery research layer, integrating NVIDIA MolMIM (a latent variable model trained on 1.54 billion molecules from ZINC-15) with PubChem chemical data and RDKit cheminformatics — enabling novel drug-like molecule generation with 85% novelty and 92% Lipinski compliance using the CMA-ES optimisation algorithm. Phase II delivered the core production system: a genomic variant analysis engine powered by the EVO2 7B genomic language model, trained on 8.8 trillion tokens across all domains of life using the StripedHyena 2 architecture. Deployed on serverless NVIDIA H100 GPUs via Modal, DeepScope accepts a genomic position and an alternative nucleotide, fetches a live 8,192 base-pair reference window from the UCSC Genome Browser, scores both the reference and mutated sequences via log-likelihood analysis, and classifies Single Nucleotide Variants (SNVs) as Likely Pathogenic or Likely Benign with a calibrated confidence score. The classification threshold was derived from a ROC analysis on BRCA1 variants from the ClinVar database. The Next.js frontend features a live interactive nucleotide sequence viewer, gene and chromosome browser, a paginated ClinVar variant explorer, and a side-by-side comparison modal to benchmark EVO2 predictions against established clinical classifications — validated on genes including BRCA1, BRAF, TP53, and LDLR.",
+    liveUrl: "https://deepscope.vercel.app",
+    githubUrl: "https://github.com/priyanshu09102003/deepscope",
+    features: [
+        {
+            title: "EVO2 7B Genomic Language Model",
+            description: "Integrates the ArcInstitute's EVO2 7B model — trained on 8.8 trillion genomic tokens using the StripedHyena 2 architecture — for zero-shot Single Nucleotide Variant (SNV) pathogenicity prediction via log-likelihood delta scoring. No fine-tuning required; the model generalises across all human genes."
+        },
+        {
+            title: "Serverless H100 GPU Inference",
+            description: "The EVO2 model is deployed as a FastAPI endpoint on Modal's serverless cloud infrastructure, provisioned with an NVIDIA H100 GPU. Model weights (~15GB) are cached in a persistent Modal Volume, delivering 3–5 second warm inference times per variant with zero idle compute costs."
+        },
+        {
+            title: "SNV Pathogenicity Classification",
+            description: "Classifies variants as Likely Pathogenic or Likely Benign by computing the log-likelihood delta (Δ = log P(variant) − log P(reference)) against a threshold of −0.0009178519, derived from ROC analysis on known BRCA1 variants. Confidence scores are normalised using class-specific standard deviations for calibrated predictions."
+        },
+        {
+            title: "ClinVar Comparison Modal",
+            description: "After running an EVO2 prediction, users can compare the result side-by-side against established ClinVar clinical classifications in a dedicated comparison overlay — enabling direct assessment of agreement between the deep learning model and expert-curated clinical consensus."
+        },
+        {
+            title: "Live Interactive Gene & Sequence Browser",
+            description: "Search any gene by name (e.g. BRCA1, BRAF, TP53) or browse by chromosome. The reference DNA sequence is fetched live from the UCSC Genome Browser API and rendered as a colour-coded interactive nucleotide viewer — clicking any base automatically pre-fills the variant position in the analysis form."
+        },
+        {
+            title: "Known Variant Explorer (ClinVar)",
+            description: "Paginated table of known clinical variants for the selected gene region, pulled in real-time from NCBI ClinVar via the E-utilities API. Each entry shows position, reference and alternative alleles, and ClinVar significance — with a one-click 'Analyse with EVO2' button that auto-populates the analysis form."
+        },
+        {
+            title: "Genome Assembly Selector",
+            description: "Supports multiple UCSC genome assemblies including hg38 (GRCh38, the current human reference genome) and others, with the genome list fetched live from the UCSC API — ensuring compatibility with different research and clinical contexts."
+        },
+        {
+            title: "Molecular Design Engine",
+            description: "Built on NVIDIA MolMIM, a latent variable model with a Perceiver Encoder and Transformer Decoder trained on 1.54 billion molecules from ZINC-15. Generates novel drug-like molecules optimised for target properties using the CMA-ES algorithm, with an 85% novelty rate against PubChem and 92% Lipinski compliance."
+        },
+        {
+            title: "PubChem & RDKit Integration",
+            description: "Integrates the PubChem chemical database for molecular data retrieval and RDKit cheminformatics for structural analysis, property computation, and molecule visualisation — forming the data backbone of the Phase I drug discovery research platform."
+        },
+        {
+            title: "Secure Proxy Architecture",
+            description: "The Modal GPU inference endpoint URL is protected through a server-side Next.js API proxy route — the browser never sees the backend URL, preventing endpoint abuse and CORS issues while keeping GPU inference costs controlled."
+        },
+    ],
+    techStack: [
+        {
+            tech: "EVO2 7B (StripedHyena 2)",
+            reason: "The core AI engine — a genomic foundation model trained on 8.8 trillion nucleotide tokens from all domains of life. Used for zero-shot log-likelihood scoring of reference and variant DNA sequences to predict SNV pathogenicity without any task-specific fine-tuning."
+        },
+        {
+            tech: "Modal (Serverless GPU)",
+            reason: "Provisions and auto-scales NVIDIA H100 GPU containers for EVO2 inference on demand. Handles container image builds with CUDA 12.8, PyTorch 2.7.1, and FlashAttention 2.8.0, and caches the 15GB model weights in a persistent Volume — enabling warm inference in 3–5 seconds with zero idle costs."
+        },
+        {
+            tech: "FastAPI",
+            reason: "REST API framework serving the EVO2 inference endpoint on Modal. Handles Pydantic request validation, the UCSC genome sequence fetch fallback, the variant sequence construction pipeline, and JSON result serialisation."
+        },
+        {
+            tech: "Python 3.12",
+            reason: "Core backend language powering the Modal application, the EVO2 model lifecycle management, the log-likelihood delta scoring pipeline, the ROC calibration analysis, and all genomic data processing utilities."
+        },
+        {
+            tech: "Next.js 15",
+            reason: "Full-stack React framework powering the entire frontend — App Router, Server Components, and the /api/analyze server-side proxy route that securely bridges the browser and the Modal GPU inference endpoint."
+        },
+        {
+            tech: "TypeScript",
+            reason: "End-to-end type safety across all React components, the genome-api.ts utility module, and the T3 env.js Zod schema — critical for reliably handling complex genomic coordinate types and multi-source API response structures."
+        },
+        {
+            tech: "UCSC Genome Browser API",
+            reason: "Primary data source for live reference genome sequences — fetches 8,192 bp windows centred on variant positions from the hg38 assembly in real time, supporting both the frontend nucleotide viewer and the backend inference pipeline."
+        },
+        {
+            tech: "NCBI ClinVar / E-utilities API",
+            reason: "Provides known clinical variant classifications for any gene region via a two-step esearch + esummary query pipeline, powering the ClinVar variant explorer table and the EVO2 vs ClinVar comparison feature."
+        },
+        {
+            tech: "NLM Clinical Tables API",
+            reason: "Powers the real-time gene name search and autocomplete component, returning NCBI gene identifiers for any human gene name query — enabling seamless gene navigation without requiring local gene index data."
+        },
+        {
+            tech: "NVIDIA MolMIM",
+            reason: "Phase I molecular design engine — a latent variable model with a Perceiver Encoder and Transformer Decoder trained on 1.54 billion molecules. Used for CMA-ES-guided generation of novel drug-like molecules optimised for target pharmacological properties."
+        },
+        {
+            tech: "RDKit + PubChem",
+            reason: "Phase I cheminformatics stack — RDKit handles molecular structural analysis, property computation, and 2D structure visualisation; PubChem provides the chemical database layer for molecular data retrieval and novelty benchmarking."
+        },
+        {
+            tech: "Tailwind CSS + Shadcn UI",
+            reason: "Tailwind utility classes handle all responsive styling for the data-dense genomic interface; Shadcn UI (built on Radix UI) provides accessible, customisable components including tabs, cards, tables, and modals used throughout the variant explorer."
+        },
+        {
+            tech: "Vercel",
+            reason: "Frontend hosting and edge deployment for the Next.js application, with environment variable management for the server-side BACKEND_URL secret and automatic CI/CD from the GitHub repository."
+        },
+        {
+            tech: "HuggingFace Hub",
+            reason: "Hosts the arcinstitute/evo2_7b model weights (~15GB). On first Modal deployment, weights are downloaded and cached in a persistent Modal Volume — subsequent container starts load from cache, avoiding repeat downloads."
+        },
+    ]
+}
 }

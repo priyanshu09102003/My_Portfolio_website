@@ -1,7 +1,7 @@
 export const projects = [
     {
         id: 1,
-        title: "CodePilot: An AI Code Editor",
+        title: "CodePilot: A Cloud-Based AI Code Editor",
         description: "A browser-based, AI-powered code editor with agentic intelligence — like Cursor, but as a SaaS.",
         image: '/images/projects/codepilot.png',
         category: "Fullstack & AI",
@@ -11,7 +11,7 @@ export const projects = [
     },
     {
         id: 2,
-        title: "FluxorAI: An AI-automation Platform",
+        title: "FluxorAI: A Visual AI-automation Platform",
         description: "A visual AI-automation platform to build, automate, and deploy intelligent AI workflows at scale.",
         image: '/images/projects/fluxorai.png',
         category: "Fullstack & AI",
@@ -21,8 +21,8 @@ export const projects = [
     },
     {
         id: 3,
-        title: "LMN",
-        description: "LMN",
+        title: "Signalist: A Stock Market and Crypto Intelligence Platform",
+        description: "Real-time market intelligence for stocks & crypto — all in one place.",
         image: '/images/projects/signalist.png',
         category: "Fullstack & AI",
         technologies: ['React', 'Node.js'],
@@ -41,10 +41,10 @@ export const projects = [
     },
     {
         id: 5,
-        title: "LMN",
-        description: "LMN",
-        image: '/images/projects/codepilot.png',
-        category: "Fullstack & AI",
+        title: "DeepScope: Drug and Chromosomal Research Agent",
+        description: "AI-powered genomic variant analysis — predict DNA mutation pathogenicity with a 7B genomic language model.",
+        image: '/images/projects/deepscope.png',
+        category: "Team Ventures",
         technologies: ['React', 'Node.js'],
         demoUrl: 'https://codepilot-ai-cloud-ide.vercel.app/',
         githubUrl: 'https://github.com/priyanshu09102003/My_Portfolio_website'
@@ -92,4 +92,4 @@ export const projects = [
 
 ]
 
-export const categories = ["All", "Fullstack & AI", "Team Ventures", "Frontend", "Neural Networks"];
+export const categories = ["All", "Fullstack & AI", "Team Ventures", "Frontend", "GenAI"];
