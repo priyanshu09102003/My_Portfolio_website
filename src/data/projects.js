@@ -51,10 +51,10 @@ export const projects = [
     },
     {
         id: 6,
-        title: "LMN",
-        description: "LMN",
-        image: '/images/projects/codepilot.png',
-        category: "Fullstack & AI",
+        title: "SpecTrum: One platform. Every way to learn.",
+        description: "A unified learning platform that merges instructor-led courses with AI-powered on-demand learning.",
+        image: '/images/projects/spectrum.png',
+        category: "Team Ventures",
         technologies: ['React', 'Node.js'],
         demoUrl: 'https://codepilot-ai-cloud-ide.vercel.app/',
         githubUrl: 'https://github.com/priyanshu09102003/My_Portfolio_website'

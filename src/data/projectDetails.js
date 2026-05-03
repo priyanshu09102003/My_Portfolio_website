@@ -372,5 +372,90 @@ export const projectDetails = {
             reason: "Hosts the arcinstitute/evo2_7b model weights (~15GB). On first Modal deployment, weights are downloaded and cached in a persistent Modal Volume — subsequent container starts load from cache, avoiding repeat downloads."
         },
     ]
+},
+
+    6: {
+    title: "SpecTrum",
+    tagline: "A unified learning platform that merges instructor-led courses with AI-powered on-demand learning.",
+    description: "SpecTrum is a full-stack educational technology platform built with my team at the Dawn of Code Hackathon, where we reached the finals. It solves the 'knowledge juggle' problem — students, researchers, and professionals waste up to 40% of their productive time context-switching across fragmented tools like Coursera, ChatGPT, Google Docs, and Zotero. SpecTrum consolidates all of this into one seamless ecosystem. The platform operates on a dual-mode architecture: the 'Guided Path' for structured, instructor-led courses with timestamps, note uploads, and a doubt engine — and the 'Express Lane', an LLM-powered AI engine that generates fully personalised courses on any topic in under 60 seconds, complete with curated resources, lecture summaries, video content, and digital notes. The frontend integrates Three.js for immersive 3D learning environments, transforming traditional course interfaces into interactive spatial experiences. The backend is built on Prisma ORM with PostgreSQL for type-safe data management, Arcjet for bot protection and rate limiting, AWS S3 with pre-signed URLs for secure media storage, and Stripe for subscription billing.",
+    liveUrl: "",
+    githubUrl: "",
+    features: [
+        {
+            title: "AI Express Lane — Instant Course Generation",
+            description: "LLM-powered engine that generates a fully personalised course on any topic in under 60 seconds. Users specify the duration and difficulty level, and the AI produces a structured curriculum with curated resources, lecture summaries, code snippets, and comprehensive digital notes — all in one click."
+        },
+        {
+            title: "Guided Path — Instructor-Led Courses",
+            description: "Structured course creation dashboard for educators with course structuring tools, automatic timestamp generation, note and resource uploading, and an integrated doubt engine — enabling a complete instructor-to-learner experience within the platform."
+        },
+        {
+            title: "Immersive 3D Learning Environments",
+            description: "Integrates Three.js to render interactive 3D environments within the learning interface, transforming traditional flat course pages into spatial, immersive experiences that improve engagement and knowledge retention."
+        },
+        {
+            title: "Inbuilt Video Player with Curated Lectures",
+            description: "Both Express Lane and Guided Path courses include an inbuilt video player with curated video lectures matched to the user's topic, duration preference, and difficulty — going beyond just text notes to deliver a complete multimedia learning experience."
+        },
+        {
+            title: "Automated Knowledge Curation",
+            description: "For every AI-generated course, the platform automatically curates and organises the most relevant external resources, references, and reading materials — eliminating the need for learners to manually search across multiple platforms."
+        },
+        {
+            title: "Secure Authentication & Bot Protection",
+            description: "Clerk handles user authentication with OAuth and session management, while Arcjet provides comprehensive bot protection, rate limiting, and attack prevention — ensuring the platform is secure at scale."
+        },
+        {
+            title: "AWS S3 Media Infrastructure",
+            description: "All course media — videos, notes, uploaded instructor files — are stored on Amazon S3 with pre-signed URLs for secure, direct content delivery. Designed for scalability and reliable access across all user types."
+        },
+        {
+            title: "Stripe Subscription Billing",
+            description: "Full subscription management via Stripe, supporting recurring billing, plan gating between free and premium tiers, and secure payment processing — providing the complete SaaS monetisation layer for both learners and educators."
+        },
+    ],
+    techStack: [
+        {
+            tech: "Next.js 15",
+            reason: "Full-stack framework powering the entire platform — App Router, Server Components, and API routes handle both the dual-mode learning UI and the backend data pipeline for course generation and content delivery."
+        },
+        {
+            tech: "Three.js",
+            reason: "Powers the immersive 3D learning environments integrated into the course interface, enabling interactive spatial experiences that go beyond traditional flat course layouts."
+        },
+        {
+            tech: "LLM API",
+            reason: "The core of the Express Lane feature — drives instant, personalised course generation from a single topic input, producing structured curricula, curated resources, summaries, and digital notes in under 60 seconds."
+        },
+        {
+            tech: "TypeScript",
+            reason: "End-to-end type safety across all React components, API routes, and database queries — critical for maintaining reliability across the dual-mode platform's complex data flows."
+        },
+        {
+            tech: "Prisma ORM + PostgreSQL",
+            reason: "PostgreSQL provides a robust, scalable relational database for all course, user, and content data; Prisma adds type-safe, auto-generated query APIs and schema-driven migrations."
+        },
+        {
+            tech: "Clerk",
+            reason: "Handles user authentication with email/password and OAuth, session management, and role-based access control for both learner and instructor account types."
+        },
+        {
+            tech: "Arcjet",
+            reason: "Provides comprehensive application security — bot detection, rate limiting, and protection against common web attacks — ensuring the platform remains reliable and abuse-resistant under load."
+        },
+        {
+            tech: "Amazon S3 (AWS)",
+            reason: "Industry-standard scalable object storage for all course media and uploaded instructor content, with pre-signed URLs enabling secure, direct browser access without routing large files through the server."
+        },
+        {
+            tech: "Stripe",
+            reason: "Handles all subscription billing and payment processing — recurring plans, plan-based feature gating, and secure checkout — providing the complete monetisation infrastructure for the SaaS platform."
+        },
+        {
+            tech: "TailwindCSS + Shadcn UI",
+            reason: "Tailwind utility classes enable rapid, consistent styling for the data-dense learning interface; Shadcn UI provides accessible, Radix-based components customised to match the platform's minimalist but immersive design language."
+        },
+    ]
 }
+
 }
