@@ -61,20 +61,20 @@ export const projects = [
     },
     {
         id: 7,
-        title: "LMN",
-        description: "LMN",
-        image: '/images/projects/codepilot.png',
-        category: "Fullstack & AI",
+        title: "MeetFlow - AI Video Intelligence with RAG",
+        description: "Transform any video or meeting recording into structured, queryable intelligence.",
+        image: '/images/projects/meetflow.png',
+        category: "GenAI",
         technologies: ['React', 'Node.js'],
         demoUrl: 'https://codepilot-ai-cloud-ide.vercel.app/',
-        githubUrl: 'https://github.com/priyanshu09102003/My_Portfolio_website'
+        githubUrl: 'https://github.com/priyanshu09102003/Meetflow-AI_Video_Assistant_with_RAG'
     },
     {
         id: 8,
-        title: "LMN",
-        description: "LMN",
-        image: '/images/projects/codepilot.png',
-        category: "Fullstack & AI",
+        title: "ApexUI - An open-source React component library",
+        description: "An open-source React component library for building production-grade applications faster.",
+        image: '/images/projects/apexui.png',
+        category: "Frontend",
         technologies: ['React', 'Node.js'],
         demoUrl: 'https://codepilot-ai-cloud-ide.vercel.app/',
         githubUrl: 'https://github.com/priyanshu09102003/My_Portfolio_website'

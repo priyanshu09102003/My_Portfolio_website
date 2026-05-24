@@ -456,6 +456,162 @@ export const projectDetails = {
             reason: "Tailwind utility classes enable rapid, consistent styling for the data-dense learning interface; Shadcn UI provides accessible, Radix-based components customised to match the platform's minimalist but immersive design language."
         },
     ]
+},
+
+7: {
+    title: "MeetFlow - AI Video Intelligence with RAG",
+    tagline: "Transform any video or meeting recording into structured, queryable intelligence.",
+    description: "MeetFlow is a full-stack AI pipeline that ingests YouTube videos or local audio/video files and processes them through a six-stage intelligence engine to deliver structured, actionable knowledge. It generates full verbatim transcripts, professional bullet-point summaries, and automatically extracts action items, key decisions, and open questions — all powered by Gemini 2.0 Flash. The standout feature is a RAG-powered conversational chat interface that lets you ask any question about the video content and receive answers grounded strictly in the transcript itself, with ChromaDB as the persistent vector store and all-MiniLM-L6-v2 for semantic embeddings — ensuring zero hallucination. A first-class Hindi and Hinglish support layer via Sarvam AI's saaras:v2.5 model performs speech-to-text transcription and English translation in a single API call, making the full downstream pipeline — summarisation, extraction, and RAG chat — available for Indian-language recordings. The summarisation pipeline uses a map-reduce architecture to handle transcripts of any length, and the interface is built on Streamlit extended with custom CSS, CSS variables, Syne and JetBrains Mono typography, and animated pipeline status indicators for a production-grade dark UI.",
+    liveUrl: "",
+    githubUrl: "https://github.com/priyanshu09102003/Meetflow-AI_Video_Assistant_with_RAG",
+    features: [
+        {
+            title: "RAG-Powered Conversational Chat",
+            description: "Ask any question about the video or meeting and get an answer grounded strictly in the transcript. The RAG pipeline embeds the transcript into ChromaDB using all-MiniLM-L6-v2, retrieves the top-4 most semantically relevant chunks per query, and passes them to Gemini with an explicit grounding instruction — if the answer isn't in the transcript, the model says so rather than hallucinating."
+        },
+        {
+            title: "Hindi & Hinglish Support",
+            description: "One of very few RAG pipelines with native support for Hindi and code-switched Hinglish audio. Sarvam AI's saaras:v2.5 model performs speech-to-text transcription and English translation in a single API call — the resulting English transcript feeds directly into the same summarisation, extraction, and RAG pipeline as any English recording, with no downstream code changes required."
+        },
+        {
+            title: "Map-Reduce Summarisation",
+            description: "Handles transcripts of any length using a two-phase map-reduce approach — the transcript is split into 6000-token chunks, each independently summarised by Gemini (map phase), and all partial summaries are combined into a final professional bullet-point summary (reduce phase). No context window limits, no truncation."
+        },
+        {
+            title: "Automated Insight Extraction",
+            description: "Three independent LangChain chains run against the full transcript to extract action items with owners and deadlines, key decisions made during the session, and open questions needing follow-up. Empty categories are hidden entirely — the UI expands non-empty results to fill available width dynamically."
+        },
+        {
+            title: "Multi-Source Audio Ingestion",
+            description: "Accepts YouTube URLs (downloaded via yt-dlp with FFmpeg post-processing) and local file uploads across MP4, MKV, MOV, MP3, WAV, M4A, and WebM formats. All audio is normalised to mono 16kHz WAV — the exact format Whisper and Sarvam expect — and chunked into 10-minute segments to stay within API limits."
+        },
+        {
+            title: "Local Whisper Transcription",
+            description: "English audio is transcribed entirely locally using OpenAI's Whisper small model — no API call, no cost, full privacy. All chunk transcripts are concatenated into a single continuous transcript string that feeds the downstream pipeline."
+        },
+        {
+            title: "Persistent Vector Store",
+            description: "ChromaDB persists the vector index to disk at ./vector_db/, surviving app restarts and avoiding redundant re-embedding of the same transcript across sessions. The 500-token chunk size with 50-token overlap is tuned for high retrieval precision — each chunk maps to roughly 30–45 seconds of speech, a semantically coherent unit."
+        },
+        {
+            title: "Production-Grade Dark UI",
+            description: "Built on Streamlit extended with custom CSS variables, a grid background, glow effects, animated pipeline status dots, and Syne + JetBrains Mono typography — far beyond Streamlit's default aesthetic. The sidebar shows a live six-stage pipeline status with pulsing indicators, and the results layout adapts responsively based on which insight categories have content."
+        },
+    ],
+    techStack: [
+        {
+            tech: "Gemini 2.0 Flash",
+            reason: "Primary LLM powering title generation, map-reduce summarisation, insight extraction (action items, decisions, open questions), and RAG answer generation — chosen for its 15 RPM / 1500 RPD free tier, which comfortably handles the 6–8 sequential API calls the pipeline fires per session."
+        },
+        {
+            tech: "OpenAI Whisper (small)",
+            reason: "Local English speech-to-text transcription — runs entirely on CPU with no API call, no cost, and full privacy. The small model balances transcription accuracy and speed for recordings up to several hours."
+        },
+        {
+            tech: "Sarvam AI (saaras:v2.5)",
+            reason: "State-of-the-art Indian language speech model that performs Hindi/Hinglish transcription and English translation in a single API call. Handles code-switching between Hindi and English natively, producing an English transcript that feeds directly into the downstream pipeline."
+        },
+        {
+            tech: "ChromaDB",
+            reason: "Persistent vector store for the RAG engine — stores 384-dimensional embeddings of transcript chunks on disk, enabling cosine similarity search for top-k retrieval per query and surviving app restarts without re-embedding."
+        },
+        {
+            tech: "LangChain (LCEL)",
+            reason: "Powers all LLM chain composition — the map-reduce summarisation chains, the three insight extraction chains, and the RAG chain built with LangChain Expression Language for declarative, composable retriever → prompt → LLM → parser pipelines."
+        },
+        {
+            tech: "HuggingFace all-MiniLM-L6-v2",
+            reason: "22M parameter sentence transformer producing 384-dimensional dense vectors for both transcript chunk indexing and query embedding. Runs entirely locally on CPU — no API latency or cost — with strong semantic accuracy on short text passages."
+        },
+        {
+            tech: "Streamlit",
+            reason: "Web UI framework extended with custom CSS variables, typography, glow effects, animated pipeline status indicators, and a responsive card layout — delivering a production-grade dark interface well beyond Streamlit's default aesthetic."
+        },
+        {
+            tech: "yt-dlp + FFmpeg",
+            reason: "yt-dlp handles YouTube audio extraction with FFmpeg post-processing to convert downloaded streams to clean mono 16kHz WAV — the exact format required by both Whisper and Sarvam for accurate transcription."
+        },
+        {
+            tech: "PyDub",
+            reason: "Handles format conversion for locally uploaded files (MP4, MKV, MOV, MP3, M4A, WebM) to normalised WAV, and performs the 10-minute chunking of long recordings to stay within transcription API size limits."
+        },
+        {
+            tech: "Python 3.12",
+            reason: "Core language powering the entire pipeline — audio processing, transcription routing, LLM chain orchestration, vector store management, and the Streamlit application layer."
+        },
+    ]
+}, 
+
+8: {
+    title: "Apex UI",
+    tagline: "An open-source React component library for building production-grade applications faster.",
+    description: "Apex UI is a premium, open-source UI component library built with Next.js 16, React 19+, TypeScript, and Tailwind CSS v4. It delivers 100+ beautifully crafted, animated, and accessible components and composite blocks that drop into any project with a single CLI command. The library is architected around a dual registry system — separate registries for modular individual components and multi-file composite blocks — with automated CLI-based installation via the shadcn registry protocol and intelligent dependency resolution that handles transitive requirements automatically. Components are built on top of shadcn/ui and Radix UI primitives, extended with custom CSS animations, advanced interactivity, and WCAG accessibility compliance. The documentation site is built with Fumadocs and features live component previews, interactive code playgrounds, and v0 editor integration for real-time editing. The theming system is built on Tailwind CSS v4 CSS variables and design tokens, enabling full visual customisation without touching component internals. Apex UI was created to empower developers with production-grade UI components, improve design consistency across applications, and contribute high-quality reusable components back to the open-source community.",
+    liveUrl: "https://apexui-kappa.vercel.app",
+    githubUrl: "https://github.com/priyanshu09102003/apexui",
+    features: [
+        {
+            title: "100+ Production-Ready Components & Blocks",
+            description: "A comprehensive library of individually modular components (cards, buttons, inputs, modals, and more) and composite blocks — multi-file, multi-component assemblies like AI card generators — all production-ready, animated, and accessible out of the box."
+        },
+        {
+            title: "Dual Registry Architecture",
+            description: "Engineered separate shadcn registries for components and blocks, with each entry declaring its own dependency graph. The CLI resolves and installs all required files, utilities, and peer dependencies automatically — reducing integration from hours to a single command."
+        },
+        {
+            title: "One-Command CLI Installation",
+            description: "Any component or block installs with a single shadcn CLI command across npm, pnpm, and bun. The registry protocol handles file placement, dependency installation, and utility setup — developers go from install to rendered component in seconds."
+        },
+        {
+            title: "Modern Animation Library",
+            description: "Every component ships with carefully crafted CSS animations and transition effects — hover states, entrance animations, interactive feedback, and micro-interactions — all tuned to feel premium without sacrificing performance."
+        },
+        {
+            title: "Tailwind CSS v4 Theming System",
+            description: "The entire library is built on Tailwind CSS v4 CSS variables and design tokens, enabling full theme customisation — colours, radius, spacing, typography — without modifying any component internals. Light and dark mode support is built in."
+        },
+        {
+            title: "Interactive Documentation with Fumadocs",
+            description: "Comprehensive documentation built with Fumadocs featuring live component previews, copy-ready code snippets, interactive code playgrounds, and v0 editor integration — so developers can see, edit, and copy components without leaving the docs."
+        },
+        {
+            title: "WCAG Accessibility Compliance",
+            description: "All components are built on Radix UI primitives, inheriting keyboard navigation, screen reader support, focus management, and ARIA attribute handling — meeting WCAG accessibility standards without any additional configuration."
+        },
+        {
+            title: "Monorepo & Multi-Package Support",
+            description: "The CLI supports monorepo workspaces via the -c flag, allowing teams to install components directly into specific workspace packages — making Apex UI usable in enterprise monorepo setups alongside standard single-repo projects."
+        },
+    ],
+    techStack: [
+        {
+            tech: "Next.js 16 + React 19",
+            reason: "Powers the Apex UI documentation and preview site — App Router and Server Components deliver fast, SEO-friendly pages for the component catalogue, while React 19's concurrent features support the live interactive previews."
+        },
+        {
+            tech: "TypeScript",
+            reason: "End-to-end type safety across all component props, variant definitions, and utility functions — ensuring every component shipped in the registry has fully typed APIs that integrate cleanly into any TypeScript project."
+        },
+        {
+            tech: "Tailwind CSS v4",
+            reason: "The styling backbone of every component — utility classes handle all layout, spacing, and responsive behaviour, while CSS variables and the v4 design token system power the theming layer that lets users customise the entire library from a single config."
+        },
+        {
+            tech: "shadcn/ui + Radix UI",
+            reason: "The architectural foundation — shadcn/ui's registry protocol enables the CLI-based installation system, while Radix UI primitives provide the accessible, unstyled component behaviours (dialogs, dropdowns, tabs, selects) that Apex UI components are built on top of."
+        },
+        {
+            tech: "Fumadocs",
+            reason: "Powers the interactive documentation site with live component previews, syntax-highlighted code blocks, copy buttons, and v0 editor integration — purpose-built for component library documentation with a clean, searchable layout."
+        },
+        {
+            tech: "Custom shadcn Registry",
+            reason: "A dual registry system with separate JSON manifests for individual components and composite blocks, each declaring file paths, dependencies, and peer requirements — enabling the shadcn CLI to resolve and install everything automatically."
+        },
+        {
+            tech: "Lucide React",
+            reason: "Default icon library used across components — consistently sized, stroke-based SVG icons that scale cleanly with Tailwind utility classes and respect the theming system's colour tokens."
+        },
+    ]
 }
 
 }

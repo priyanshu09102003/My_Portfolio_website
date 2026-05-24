@@ -94,7 +94,7 @@ export const skills = [
   // AI
   {
     id: 16,
-    name: 'Generative AI',
+    name: 'Generative AI (RAG Systems)',
     icon: 'Sparkles',
     level: 'Intermediate',
   },

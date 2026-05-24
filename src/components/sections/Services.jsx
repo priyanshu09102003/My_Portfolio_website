@@ -26,7 +26,7 @@ const Services = () => {
 
             <FadeIn delay={100}>
 
-                <TitleHeader sub="My Services" title="What I Work Best At?" />
+                <TitleHeader sub="My Services" title="What I Work The Best At?" />
                 <p className='text-lg text-white/60 text-center mt-6'>
                     Have an idea? Here's how I can help you turn it into a scalable, production-ready reality.
                 </p>

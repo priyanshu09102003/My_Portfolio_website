@@ -1,6 +1,6 @@
 export const PERSONAL_INFO = {
     name: "Priyanshu Paul",
-    title: "Full Stack Developer & GenAI Enthusiast",
+    title: "Full Stack Developer & GenAI Engineer",
     email: "paulpriyanshu704@gmail.com",
     footerTagline: "Building scalable products at lightning speed.",
     location: "Guwahati, Assam",
@@ -13,14 +13,14 @@ export const PERSONAL_INFO = {
 };
 
 export const STATS = [
-    { label: "Projects Shipped", value: "15+" },
-    { label: "GitHub Commits", value: "500+" },
-    { label: "Hours of Coding", value: "600+" },
+    { label: "Contest Ratings", value: "1652(LC)" },
+    { label: "GitHub Commits", value: "800+" },
+    { label: "Problems Solved", value: "300+" },
     { label: "Technologies Explored", value: "20+" }
 ];
 
 export const ABOUT_STATS = [
-    { label: "Years Coding", value: "3+" },
+    { label: "Coding Exp(Years)", value: "3+" },
     { label: "API Integrations", value: "15+" },
     { label: "Apps Deployed", value: "15+" },
 ];

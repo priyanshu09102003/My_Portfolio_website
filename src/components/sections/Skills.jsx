@@ -26,7 +26,7 @@ const Skills = () => {
         skills.find(s => s.name === 'Prisma'),
     ].filter(Boolean),
     'AI & ML': [
-        skills.find(s => s.name === 'Generative AI'),
+        skills.find(s => s.name === 'Generative AI (RAG Systems)'),
         skills.find(s => s.name === 'Hugging Face'),
         skills.find(s => s.name === 'Machine Learning'),
     ].filter(Boolean),

@@ -32,10 +32,10 @@ export const services = [
         description: 'Optimizing web applications for speed and efficiency through code splitting, lazy loading, caching, and performance best practices.'
     },
     
-    {
-    id: 6,
-    icon: 'Brain',
-    title: 'Neural Network Development',
-    description: 'Training custom Convolutional Neural Networks for real-world prediction tasks and integrating them into full-stack web applications with intuitive, user-friendly interfaces.'
-    },
+   {
+        id: 6,
+        icon: 'Brain',
+        title: 'RAG System Development',
+        description: 'Building RAG pipelines that ground LLM outputs in real data — vector stores, semantic search, embedding models, and conversational AI interfaces, that can think.'
+    }
 ]
