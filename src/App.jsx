@@ -6,6 +6,7 @@ import Education from './components/sections/Education'
 import Skills from './components/sections/Skills'
 import Projects from './components/sections/Projects'
 import Services from './components/sections/Services'
+import Certificates from './components/sections/Achievements'
 import Contact from './components/sections/Contact'
 import Footer from './components/sections/Footer'
 import Lenis from 'lenis'
@@ -23,25 +24,6 @@ const App = () => {
     return () => lenis.destroy()
   }, [])
 
-  useEffect(() => {
-    window.chatbaseConfig = { chatbotId: "mNsGDixrCgQOBVjuF6Xpq" }
-
-    const preconnect = document.createElement('link')
-    preconnect.rel = 'preconnect'
-    preconnect.href = 'https://www.chatbase.co'
-    document.head.appendChild(preconnect)
-
-    const script = document.createElement('script')
-    script.src = 'https://www.chatbase.co/embed.min.js'
-    script.id = 'mNsGDixrCgQOBVjuF6Xpq'
-    script.async = true
-    document.body.appendChild(script)
-
-    return () => {
-      if (document.body.contains(script)) document.body.removeChild(script)
-      if (document.head.contains(preconnect)) document.head.removeChild(preconnect)
-    }
-  }, [])
 
   return (
     <div className='min-h-screen bg-black'>
@@ -53,10 +35,10 @@ const App = () => {
         <Skills />
         <Projects />
         <Services />
+        <Certificates/>
         <Contact />
       </main>
       <Footer />
-      <div id="chatbase-widget" />
     </div>
   )
 }
