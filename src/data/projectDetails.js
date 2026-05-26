@@ -266,6 +266,98 @@ export const projectDetails = {
         ]
     },
 
+    4: {
+    title: "SensAI",
+    tagline: "An all-in-one AI career ecosystem — from resume to offer letter.",
+    description: "SensAI is a full-stack, production-ready AI career platform built over 4 months, designed to solve the fragmented job-hunting experience. Most job seekers apply blindly without understanding industry expectations, optimizing their resumes for ATS systems, or preparing effectively for interviews. SensAI consolidates all of this into a single intelligent ecosystem. The platform features a Dynamic Industry Dashboard with live salary data, skill-gap analysis, and weekly auto-updated market trends across 50+ industries. The resume toolkit includes an ATS-optimized builder with AI-powered scoring, formatting feedback, and an AI cover letter generator tailored to specific roles. For interview preparation, SensAI integrates VAPI AI for real-time voice-based mock interviews with performance analytics, curated technical and behavioral question banks, and a progress tracking dashboard with graphical analytics. SensX — the built-in AI career assistant — provides 24/7 guidance, doubt resolution, and personalized upskilling recommendations. The Roadmap Generator uses React Flow to visualize dynamic, AI-curated learning paths with live resource links. SensAI Scheduler adds a full video-calling infrastructure powered by Stream API — supporting group meetings, face-to-face training sessions, live meeting room generation, and calendar-integrated scheduling. Inngest powers all background job automation including resume scoring workflows and scheduled insight generation, while Clerk and Stripe handle authentication and subscription billing at production scale.",
+    liveUrl: "",
+    githubUrl: "",
+    features: [
+        {
+            title: "Dynamic Industry Dashboard",
+            description: "Live salary data and market insights across 50+ industries, personalized skill-gap analysis based on the user's profile and target role, and weekly auto-updated market trends — giving job seekers a real-time understanding of industry expectations before they apply."
+        },
+        {
+            title: "ATS-Optimized Resume Builder & Scorer",
+            description: "AI-powered resume analysis that scores submissions against ATS criteria, flags formatting issues, and provides actionable improvement suggestions. An AI cover letter generator produces role-specific, tailored letters from the user's experience and the target job description."
+        },
+        {
+            title: "Voice-Based AI Mock Interviews (VAPI)",
+            description: "Real-time voice mock interviews powered by VAPI AI — users speak their answers and receive performance analytics on communication, confidence, and content. Stream API handles the real-time communication infrastructure with a 24% latency reduction over the baseline implementation."
+        },
+        {
+            title: "Technical & Behavioral Interview Practice",
+            description: "Curated mock tests, question banks spanning technical and behavioral domains, and a progress tracking dashboard with intuitive graphical analytics — letting users monitor improvement over time and identify weak areas before real interviews."
+        },
+        {
+            title: "Personalized Career Roadmap Generator",
+            description: "Dynamic, AI-generated learning roadmaps visualised using React Flow — each roadmap is personalised to the user's skill gaps and target role, with curated step-by-step learning paths and live resource links fetched by AI for every step."
+        },
+        {
+            title: "SensX — 24/7 AI Career Assistant",
+            description: "Built-in AI chatbot for instant career guidance, upskilling recommendations, and doubt resolution — available at any point in the user journey and contextually aware of the user's industry, role target, and current progress on the platform."
+        },
+        {
+            title: "SensAI Scheduler — Video Calling & Meeting Infrastructure",
+            description: "Full video-calling layer built on Stream API — supports one-on-one training sessions with mock interviewers, group meetings, and collaborative practice calls. Includes live meeting room generation, shareable meeting links, and calendar-integrated scheduling for seamless session management."
+        },
+        {
+            title: "Application Tracking System",
+            description: "A built-in job application tracker that lets users log, monitor, and manage their applications across companies and roles — providing a clear overview of pipeline status and helping users stay organised through a long job search."
+        },
+        {
+            title: "Inngest Background Job Automation",
+            description: "Inngest powers all asynchronous workflows — automated resume scoring pipelines, scheduled industry insight generation, and background job retries — ensuring the platform remains responsive under load while complex AI operations run reliably in the background."
+        },
+        {
+            title: "Production Auth & Subscription Billing",
+            description: "Clerk handles authentication with OAuth, session management, and role-based access control. Stripe powers the full subscription billing layer with plan gating, a billing portal, and webhook-driven subscription sync — deployed at production scale."
+        },
+    ],
+    techStack: [
+        {
+            tech: "Next.js + TypeScript",
+            reason: "Full-stack framework powering the entire platform — App Router, Server Components, and API routes handle everything from the dashboard UI to the resume scoring endpoints, with TypeScript providing end-to-end type safety across all integrations."
+        },
+        {
+            tech: "VAPI AI",
+            reason: "Powers the voice-based mock interview system — handles real-time speech interaction, transcription, and response generation for the AI interviewer, enabling a genuine voice interview simulation experience directly in the browser."
+        },
+        {
+            tech: "Stream API",
+            reason: "Real-time communication infrastructure for the SensAI Scheduler video-calling feature — supports group calls, one-on-one training sessions, and live meeting rooms, with communication pipeline optimisations that achieved a 24% reduction in latency."
+        },
+        {
+            tech: "React Flow",
+            reason: "Renders the dynamic, node-based career roadmap visualisations — each AI-generated learning path is displayed as an interactive flow graph with nodes representing skills, steps, and resources that users can navigate and track progress through."
+        },
+        {
+            tech: "Inngest",
+            reason: "Handles all background job automation — resume analysis pipelines, ATS scoring workflows, scheduled market trend updates, and automated feedback generation — with durable execution, automatic retries, and step functions that survive server restarts."
+        },
+        {
+            tech: "PostgreSQL + Prisma",
+            reason: "PostgreSQL provides the scalable relational database for all user data, resume entries, roadmaps, application tracking records, and session history; Prisma adds type-safe query APIs and schema-driven migrations across the entire data layer."
+        },
+        {
+            tech: "Clerk",
+            reason: "Production-grade authentication with OAuth providers, session middleware, and role-based access control — handling secure sign-in/sign-up, user profile management, and subscription gating across the platform."
+        },
+        {
+            tech: "Stripe",
+            reason: "Full subscription billing infrastructure — recurring plan management, feature gating between free and premium tiers, webhook-driven subscription status sync, and a self-serve billing portal for users to manage their plans."
+        },
+        {
+            tech: "Generative AI (LLM APIs)",
+            reason: "Powers the core intelligence layer — resume scoring and improvement feedback, ATS analysis, cover letter generation, SensX career assistant responses, and the personalised roadmap content with curated learning resource recommendations."
+        },
+        {
+            tech: "TailwindCSS + Shadcn UI",
+            reason: "Tailwind utility classes handle all responsive styling across the dashboard, resume builder, and interview prep interfaces; Shadcn UI provides accessible, Radix-based components customised to match SensAI's clean, data-dense aesthetic."
+        },
+    ]
+},
+
     5: {
     title: "DeepScope",
     tagline: "AI-powered genomic variant analysis — predict DNA mutation pathogenicity with a 7B genomic language model.",
@@ -610,6 +702,121 @@ export const projectDetails = {
         {
             tech: "Lucide React",
             reason: "Default icon library used across components — consistently sized, stroke-based SVG icons that scale cleanly with Tailwind utility classes and respect the theming system's colour tokens."
+        },
+    ]
+},
+
+9: {
+    title: "CodeSwift : 3D Landing Page for a Keyboard E-Commerce Platform",
+    tagline: "A visually immersive e-commerce landing page with 3D animations and headless CMS.",
+    description: "It is a frontend-forward e-commerce landing page built to push the boundaries of what a web interface can feel like. The project is a deep dive into modern frontend craft — combining Next.js for performance and routing, Three.js for interactive 3D scene rendering directly in the browser, GSAP for silky-smooth scroll-driven animations and timeline sequences, and Prismic as the headless CMS powering all dynamic content. The result is a landing page that doesn't just display information — it responds, breathes, and pulls the user in. Every scroll triggers a choreographed animation, every section transition is purposeful, and the 3D elements add a spatial depth that flat interfaces simply can't replicate. Tailwind CSS handles the responsive layout system, ensuring the immersive experience translates cleanly across all screen sizes. CodeSwift is a showcase of what's possible when frontend development is treated as a craft — where performance, motion design, and visual storytelling converge into a single cohesive experience.",
+    liveUrl: "",
+    githubUrl: "",
+    features: [
+        {
+            title: "Interactive 3D Scene Rendering",
+            description: "Three.js powers fully interactive 3D elements rendered directly in the browser — bringing spatial depth and tactile realism to the landing page that make it feel closer to a product experience than a webpage."
+        },
+        {
+            title: "Scroll-Driven GSAP Animations",
+            description: "GSAP timeline sequences choreograph every scroll interaction — elements enter, transform, and exit with precision timing and easing curves that make the page feel alive and intentional rather than static."
+        },
+        {
+            title: "Headless CMS with Prismic",
+            description: "All dynamic content is managed through Prismic, decoupling the visual layer from the content layer — enabling fast content updates without touching the codebase while keeping the frontend fully optimised."
+        },
+        {
+            title: "Performance-First Architecture",
+            description: "Built on Next.js with server-side rendering and optimised asset loading — ensuring the 3D and animation-heavy experience loads fast and runs at a smooth frame rate without sacrificing visual fidelity."
+        },
+        {
+            title: "Fully Responsive Immersive Layout",
+            description: "Tailwind CSS handles the responsive layout system, ensuring the 3D scenes, animation sequences, and visual compositions adapt gracefully across desktop, tablet, and mobile screen sizes."
+        },
+    ],
+    techStack: [
+        {
+            tech: "Three.js",
+            reason: "Renders interactive 3D models and scenes directly in the browser via WebGL — the core of the immersive visual experience, adding spatial depth and realism that define the page's identity."
+        },
+        {
+            tech: "GSAP",
+            reason: "Powers all scroll-driven animation sequences and timeline choreography — handling entrance animations, section transitions, parallax effects, and micro-interactions with precise easing control."
+        },
+        {
+            tech: "Next.js",
+            reason: "Provides the performance foundation — server-side rendering, optimised image loading, and file-based routing keep the animation-heavy experience fast and SEO-friendly."
+        },
+        {
+            tech: "Prismic",
+            reason: "Headless CMS powering all dynamic content slices — decouples content management from the frontend so the visual layer stays lean and the content stays flexible."
+        },
+        {
+            tech: "TailwindCSS",
+            reason: "Utility-first styling system handling the fully responsive layout — ensures the immersive 3D and animation experience translates cleanly across all screen sizes and breakpoints."
+        },
+    ]
+},
+10: {
+    title: "Skateboards",
+    tagline: "A 3D skateboard brand website with a real-time interactive board customizer.",
+    description: "Skateboards is a visually immersive e-commerce landing page and interactive product customizer for a fictional skateboard brand, built to demonstrate what modern frontend development is truly capable of. The landing page is packed with scroll-driven GSAP animations, parallax sections, a physics-based interactive footer, slide-in transitions, and a fully animated 3D hero scene rendered with Three.js. The star of the project is the real-time skateboard customizer — users can swap every component of a board in real time, including the deck texture, grip tape, wheels, and trucks, with all changes reflected instantly on a live 3D model in the browser. The customizer uses React Context for state management and encodes the current board configuration directly into the URL, making every custom design shareable with a link. GSAP handles all 3D board trick animations triggered by user interaction — kickflips, ollies, and more — choreographed against the Three.js scene with hitbox-based interaction zones. All content including textures, team members, and product data is managed through Prismic's headless CMS with Slice Machine, enabling a fully composable page-building experience. The entire project is built on Next.js 15 with TypeScript and Tailwind CSS, deployed with live Prismic preview support.",
+    liveUrl: "",
+    githubUrl: "",
+    features: [
+        {
+            title: "Real-Time 3D Skateboard Customizer",
+            description: "Users can customise every component of a skateboard in real time — deck texture, grip tape, wheels, and trucks — with all changes reflected instantly on a live Three.js 3D model. The current board configuration is encoded into the URL, making every custom design shareable via a direct link."
+        },
+        {
+            title: "GSAP-Powered Board Tricks",
+            description: "Interactive trick animations — kickflips, ollies, and more — are triggered by user interaction through hitbox-based zones on the 3D model, with GSAP choreographing the full animation timeline against the Three.js scene for frame-perfect motion."
+        },
+        {
+            title: "Immersive 3D Hero Section",
+            description: "A full Three.js scene powers the hero — the skateboard model loads with grip tape, deck, wheel, and metal textures, spinning wheels, contact shadows, and a camera that moves dynamically in response to user interaction, all rendered in real time in the browser via WebGL."
+        },
+        {
+            title: "Scroll-Driven GSAP Animations",
+            description: "Every section of the landing page is animated with GSAP scroll triggers — parallax layers, slide-in reveals, sticky positioning sequences, wavy SVG path animations, and a physics-based footer that responds to user interaction with simulated physical motion."
+        },
+        {
+            title: "Headless CMS with Prismic Slice Machine",
+            description: "All content — textures, product data, team members, and page sections — is managed through Prismic's Slice Machine, enabling fully composable page building with live preview support. Imgix params handle responsive image optimisation across all media."
+        },
+        {
+            title: "Camera Controls & Hotspot Navigation",
+            description: "The customizer features a fully controllable camera that moves to preset positions on component selection, with interactive hotspots mapped to each skateboard part — giving users an intuitive, spatial way to navigate and customise the 3D model."
+        },
+    ],
+    techStack: [
+        {
+            tech: "Three.js",
+            reason: "Renders the interactive 3D skateboard model directly in the browser via WebGL — handling all geometry, PBR texture mapping (grip tape, deck, wheels, metal trucks), contact shadows, lighting, spinning wheel animation, and real-time texture swaps in the customizer."
+        },
+        {
+            tech: "GSAP",
+            reason: "Powers all animation across the site — scroll-driven section transitions, parallax effects, slide-in reveals, the physics footer, and the full 3D board trick animation system triggered by hitbox interactions on the Three.js scene."
+        },
+        {
+            tech: "Next.js 15",
+            reason: "Full-stack React framework providing server-side rendering, React Server Components for the content-heavy landing page sections, file-based routing for the customizer build page, and optimised font and asset loading for performance."
+        },
+        {
+            tech: "Prismic + Slice Machine",
+            reason: "Headless CMS powering all dynamic content including page slices, skateboard textures, team members, and product data — with Slice Machine enabling a fully composable page structure and live preview for real-time content editing."
+        },
+        {
+            tech: "TypeScript",
+            reason: "End-to-end type safety across all components, Prismic content types, Three.js scene utilities, and the React Context-based customizer state — keeping the complex multi-layer frontend maintainable and refactor-safe."
+        },
+        {
+            tech: "TailwindCSS",
+            reason: "Utility-first styling handling the full responsive layout across the landing page and customizer — ensuring the immersive 3D and animation experience adapts cleanly across all screen sizes and breakpoints."
+        },
+        {
+            tech: "React Context",
+            reason: "Manages the customizer's global board configuration state — tracking the selected deck, grip tape, wheels, and trucks across components, and syncing the current design to URL search params for shareable board configurations."
         },
     ]
 }

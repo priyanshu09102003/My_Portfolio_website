@@ -13,7 +13,7 @@ export const PERSONAL_INFO = {
 };
 
 export const STATS = [
-    { label: "Contest Ratings", value: "1652(LC)" },
+    { label: "Global Rank (Codolio)", value: "4342" },
     { label: "GitHub Commits", value: "800+" },
     { label: "Problems Solved", value: "300+" },
     { label: "Technologies Explored", value: "20+" }
@@ -22,7 +22,7 @@ export const STATS = [
 export const ABOUT_STATS = [
     { label: "Coding Exp(Years)", value: "3+" },
     { label: "API Integrations", value: "15+" },
-    { label: "Apps Deployed", value: "15+" },
+    { label: "Projects Shipped", value: "10+" },
 ];
 
 export const SOCIAL_LINKS = {

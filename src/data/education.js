@@ -6,7 +6,7 @@ export const educationData = [
     title: "B.Tech — Computer Science (AI & ML)",
     place: "Vellore Institute of Technology (Bhopal Campus)",
     date: "Sept 2023 – May 2027",
-    highlight: "CGPA: 9.20 / 10",
+    highlight: "CGPA: 9.14 / 10",
     description: "Specializing in AI & ML, shipping production-grade SaaS products alongside academics — from IEEE research publications to hackathon finals and club leadership.",
   },
   {
