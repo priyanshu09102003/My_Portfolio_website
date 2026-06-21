@@ -932,6 +932,74 @@ export const projectDetails = {
     ]
 },
 
+12: {
+    title: "Equity Research Analyst — RAG-Powered Financial Intelligence",
+    tagline: "An AI equity analyst that retrieves, reasons, and charts — grounded strictly in source articles.",
+    description: "Equity Research Analyst is a full-stack RAG pipeline that turns financial news URLs into an interactive analyst you can question. Paste in article links and ask anything from 'What are the key risks?' to 'Compare revenue growth across companies' — the system retrieves relevant context, reasons over it, and even generates charts, just like a real analyst would. Under the hood, WebBaseLoader fetches and parses live article content from any URL, RecursiveCharacterTextSplitter chunks the text into roughly 700-token segments, and HuggingFace sentence-transformers convert each chunk into a semantic vector embedding stored in a FAISS index for millisecond similarity search. A query router classifies each incoming question as retrieval, analysis, or chart-generation, routing it down the appropriate path. For factual questions, Gemini 2.5 Flash answers strictly grounded in the top-K retrieved chunks via a carefully designed prompt template — eliminating hallucination by anchoring every claim to the source text. For analytical questions, the model reasons more freely across the retrieved context like a human analyst would, with anything extending beyond the source material explicitly labelled [Analyst View] so the user always knows what's grounded fact versus inference. The project was built as a project-based deep dive into standardised LangChain components — document loaders, text splitters, embeddings, vector stores, and prompt templates — each handled by a single, composable building block.",
+    liveUrl: "",
+    githubUrl: "",
+    features: [
+        {
+            title: "URL-Based Live Article Ingestion",
+            description: "WebBaseLoader fetches and parses financial news articles directly from any pasted URL — acting as the 'eyes' of the RAG system, reading the full article text exactly as a human researcher would, with no manual copy-pasting required."
+        },
+        {
+            title: "Intelligent Query Routing",
+            description: "Every incoming question is classified by a query router into one of three paths — retrieval (factual lookup), analysis (reasoning across context), or chart (visual data generation) — ensuring each question gets handled by the most appropriate downstream logic."
+        },
+        {
+            title: "Grounded, Hallucination-Resistant Answers",
+            description: "Factual questions are answered strictly from the top-K retrieved chunks via a structured prompt template that constrains Gemini 2.5 Flash to the source material — any claim beyond what the articles state is explicitly excluded rather than invented."
+        },
+        {
+            title: "Analyst-Style Reasoning with Labelled Inference",
+            description: "For broader analytical questions, the model reasons across retrieved context more like a human analyst — synthesising trends and comparisons — while clearly tagging any insight that extends beyond the source text as [Analyst View], preserving a clean line between fact and inference."
+        },
+        {
+            title: "Semantic Chunk Retrieval via FAISS",
+            description: "Article text is split into ~700-token chunks with RecursiveCharacterTextSplitter, embedded with HuggingFace sentence-transformers, and indexed in FAISS — enabling sub-second similarity search where semantically related phrases (e.g. 'profit rose 12%' and 'earnings grew this quarter') are retrieved together even with different wording."
+        },
+        {
+            title: "Automated Chart Generation",
+            description: "Questions classified as chart-type queries trigger automatic visualisation of extracted financial data — letting users go from a raw article to a visual comparison (e.g. revenue growth across companies) without manually building a chart themselves."
+        },
+        {
+            title: "Multi-Document Comparative Analysis",
+            description: "Supports ingesting multiple article URLs simultaneously, enabling cross-document questions like comparing financial metrics, risk factors, or growth figures across several companies in a single query."
+        },
+    ],
+    techStack: [
+        {
+            tech: "LangChain",
+            reason: "Provides every standardised building block of the pipeline — document loaders, text splitters, embedding interfaces, vector store integration, and prompt templates — each handled by a single composable component, keeping a complex multi-stage RAG pipeline manageable."
+        },
+        {
+            tech: "Gemini 2.5 Flash",
+            reason: "The reasoning engine for both grounded factual answers and freer analyst-style synthesis — chosen for its strong context-following behaviour, which is critical for strictly anchoring responses to retrieved chunks when required."
+        },
+        {
+            tech: "FAISS",
+            reason: "Vector database acting as the 'memory' of the RAG system — indexes all chunk embeddings and performs millisecond similarity search to surface the most semantically relevant context for any user question."
+        },
+        {
+            tech: "HuggingFace Sentence-Transformers",
+            reason: "Converts each text chunk into a dense semantic vector — ensuring phrases with similar meaning but different wording end up close together in vector space, which is what makes semantic (not just keyword) retrieval possible."
+        },
+        {
+            tech: "WebBaseLoader",
+            reason: "Fetches and parses raw article content directly from any pasted URL, forming the ingestion entry point of the pipeline — the component that 'reads' the source material before any chunking or embedding occurs."
+        },
+        {
+            tech: "RecursiveCharacterTextSplitter",
+            reason: "Splits long articles into ~700-token chunks with controlled overlap and separator hierarchy — tuned specifically to balance retrieval precision against losing context at chunk boundaries."
+        },
+        {
+            tech: "Python",
+            reason: "Core language orchestrating the full pipeline — from URL ingestion and chunking through embedding, FAISS indexing, query routing, and the final Gemini-based response generation."
+        },
+    ]
+}
+
 
 
 }

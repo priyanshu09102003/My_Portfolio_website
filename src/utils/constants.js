@@ -13,8 +13,8 @@ export const PERSONAL_INFO = {
 };
 
 export const STATS = [
-    { label: "Global Rank (Codolio)", value: "4342" },
-    { label: "GitHub Commits", value: "800+" },
+    { label: "Global Rank (Codolio)", value: "3762" },
+    { label: "GitHub Commits", value: "900+" },
     { label: "Problems Solved", value: "300+" },
     { label: "Technologies Explored", value: "20+" }
 ];

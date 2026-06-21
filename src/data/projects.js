@@ -111,6 +111,16 @@ export const projects = [
         demoUrl: 'https://skateboards-webstore.vercel.app/',
         githubUrl: 'https://github.com/priyanshu09102003/Skateboards-3D-Webstore'
     },
+    {
+        id: 12,
+        title: "Equity Research Analyst — RAG-Powered Financial Intelligence",
+        description: "An AI equity analyst that retrieves, reasons, and charts — grounded strictly in source articles.",
+        image: '/images/projects/equity.png',
+        category: "GenAI",
+        technologies: ['Gemini 2.5', 'ChromaDB', 'LangChain', 'RAG', 'SQLite', 'Python', 'Streamlit'],
+        demoUrl: 'https://news-research-ai.streamlit.app/',
+        githubUrl: 'https://github.com/priyanshu09102003/GenerativeAI_HandsON/tree/main/RAG/RAG_Projects/Equity_Research_Analyst'
+    },
 ]
 
 export const categories = ["All", "Fullstack & AI", "Team Ventures", "Frontend", "GenAI"];
