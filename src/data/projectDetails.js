@@ -1,7 +1,107 @@
 export const projectDetails = {
+ 
     
-
     1: {
+    title: "Plabon (প্লাৱন)",
+    tagline: "A Corrective-RAG flood and disaster relief assistant for Assam, grounded in official SOPs and live data.",
+    description: "Plabon(প্লাৱন) — the Assamese word for flood — is a Corrective Retrieval-Augmented Generation (C-RAG) system built to close the gap between Assam's dense government disaster management documents and the people who need that information during an active emergency. Every year, the Brahmaputra floods over 2,000 villages across 27 districts, and the official SOPs from NDMA, ASDMA, CWC, and IMD exist but are locked in technical PDFs few can navigate under pressure and disastrous situations. Plabon solves this with a genuine architectural step beyond standard RAG: a dedicated corrective grading phase that evaluates every retrieved document chunk before deciding how to answer, rather than blindly passing retrieval results to the LLM. A single Gemini Flash call grades all retrieved chunks as relevant, ambiguous, or irrelevant — and that label determines which of three distinct generation paths is taken: answer from local SOPs alone, supplement local context with a domain-restricted web search (limited strictly to ndma.gov.in, asdma.assam.gov.in, cwc.gov.in, and mausam.imd.gov.in), or discard local context entirely and answer from live government sources only. The knowledge base spans 27 official documents (4,130 pages, 12,002 chunks) covering floods, GLOF risk, earthquakes, landslides, and cyclones, ingested through a custom pipeline with automatic OCR fallback for scanned government PDFs and structure-aware chunking that preserves numbered SOP clauses and tables. Alongside the chat assistant, a Live Flood Situational Map renders real-time data from 9 CWC gauge stations — pulling live rainfall and GloFAS river discharge from the Open-Meteo APIs, computing a composite flood risk index, and rendering it on a Folium map with satellite imagery, Assam district overlays, and a SQLite-backed threshold-crossing alert log.",
+    liveUrl: "",
+    githubUrl: "https://github.com/priyanshu09102003/Plabon---A_flood_relief_Corrective_RAG",
+    features: [
+        {
+            title: "Corrective Grading — The C in C-RAG",
+            description: "Before any answer is generated, a dedicated Gemini Flash-Lite call grades every retrieved chunk against the query as relevant, ambiguous, or irrelevant — with a stated reason for each label. This catches what a similarity threshold cannot: a chunk that is topically related but temporally stale, like SOP text that explains how danger levels work but can't report today's actual water reading."
+        },
+        {
+            title: "Three-Path Generation Routing",
+            description: "The grading outcome determines the generation strategy automatically — answer from local SOPs only when documents are sufficient, supplement local context with live web search when results are ambiguous, or discard local context entirely and answer from official web sources when nothing relevant was retrieved."
+        },
+        {
+            title: "Domain-Restricted Web Search Fallback",
+            description: "When web search fires, it is restricted exclusively to four authoritative government domains — NDMA, ASDMA, CWC, and IMD — via DuckDuckGo's free search API. No open web results, no random blog posts, no outdated forum answers; a deliberate safety constraint for a life-safety domain."
+        },
+        {
+            title: "Live Flood Situational Map",
+            description: "A real-time interactive map of Assam built on Folium with satellite imagery, showing 9 CWC gauge stations color-coded by alert level. Live rainfall data comes from the Open-Meteo Forecast API and river discharge from the Open-Meteo Flood API (GloFAS hydrological model), auto-refreshing on a user-configurable timer."
+        },
+        {
+            title: "Composite Flood Risk Index",
+            description: "A transparent, explainable risk score blending 24-hour rainfall (capped contribution, saturating near IMD's 'very heavy rainfall' threshold) with discharge anomaly percentage against each station's 14-day baseline — classified into NORMAL, WARNING, DANGER, and EXTREME alert bands shown on the map and in trend charts."
+        },
+        {
+            title: "Threshold Crossing Alert Log",
+            description: "Every refresh compares each station's computed alert level against its last known state in a local SQLite database, logging only genuine transitions (e.g. WARNING → DANGER) as ESCALATION or DE-ESCALATION events — producing both an inline session banner and a persistent Recent Alert Activity audit feed."
+        },
+        {
+            title: "OCR-Resilient Document Ingestion",
+            description: "A custom ingestion pipeline handles scanned government PDFs — common among CWC and NDMA documents — by detecting pages with insufficient extractable text and falling back to Tesseract OCR at 200 DPI, with per-page caching so a 20-minute OCR run on a large file is never repeated on subsequent runs."
+        },
+        {
+            title: "Structure-Aware Chunking with Page Attribution",
+            description: "Government SOPs live in numbered clauses and tables that generic paragraph splitting destroys. Chunking prioritises section and chapter boundaries before falling back to paragraph and sentence splits, then maps every chunk's character offset back to its original source page — making citations meaningful rather than arbitrary."
+        },
+        {
+            title: "Hardcoded Emergency Helplines",
+            description: "Critical emergency contact numbers — ASDMA, National Disaster Management, India General Emergency (112), and NDRF — are appended to every single response regardless of retrieval outcome, since safety-critical information is too important to depend on retrieval surfacing it correctly."
+        },
+        {
+            title: "Cited, Hallucination-Resistant Answers",
+            description: "Every factual claim in the raw LLM output carries an internal source tag — document and page, or web URL — enabling systematic grounding verification during development. These tags are stripped before reaching the user, who instead sees a clean, plain-language answer appropriate for reading in an active emergency."
+        },
+    ],
+    techStack: [
+        {
+            tech: "Gemini 2.5 Flash + Flash-Lite",
+            reason: "Flash-Lite powers the corrective grading step — a cheap, fast call that labels every retrieved chunk as relevant, ambiguous, or irrelevant — while the full Flash model handles final answer generation across three distinct prompt templates depending on the grading outcome."
+        },
+        {
+            tech: "LangChain (LCEL)",
+            reason: "Composes the full C-RAG pipeline — retrieval, grading, web search fallback, and generation — into a structured, maintainable chain, alongside RecursiveCharacterTextSplitter for the structure-aware document chunking."
+        },
+        {
+            tech: "ChromaDB",
+            reason: "Free, local, persistent vector store holding 12,002 chunks across 27 official disaster management documents, enabling sub-second cosine similarity search at query time with zero ongoing storage cost."
+        },
+        {
+            tech: "sentence-transformers/all-MiniLM-L6-v2",
+            reason: "Free, local, CPU-only embedding model chosen specifically to index 27 government documents totalling 4,130 pages without API cost or rate limits — produces compact 384-dimensional vectors keeping total ChromaDB storage under 50MB."
+        },
+        {
+            tech: "PyMuPDF + Tesseract OCR",
+            reason: "PyMuPDF handles native text extraction and page rendering; Tesseract OCR at 200 DPI is the automatic fallback for scanned government PDFs with no extractable text layer, with results checkpointed per-page to disk to make large OCR runs resumable and never repeated."
+        },
+        {
+            tech: "DuckDuckGo Search (ddgs)",
+            reason: "Powers the domain-restricted web search fallback — free, no API key required — with queries scoped exclusively to NDMA, ASDMA, CWC, and IMD government domains to ensure any live-supplemented answer stays within authoritative sources."
+        },
+        {
+            tech: "Open-Meteo Forecast + Flood APIs",
+            reason: "Public, key-free meteorological APIs feeding the Live Flood Situational Map — hourly precipitation per gauge station from the Forecast API, and GloFAS-modelled daily river discharge from the dedicated Flood API, both cached appropriately to balance freshness against API load."
+        },
+        {
+            tech: "Folium + streamlit-folium",
+            reason: "Renders the interactive flood map with Esri World Imagery satellite tiles, Assam district GeoJSON polygon overlays color-coded by alert level, and toggleable rainfall icon layers scaled by 24-hour precipitation intensity."
+        },
+        {
+            tech: "Plotly",
+            reason: "Renders the all-station horizontal bar chart of current danger-level percentages and the 24-hour risk trend line, both consuming the same live data dictionary the map uses to keep chart and map markers perfectly in sync."
+        },
+        {
+            tech: "SQLite",
+            reason: "Lightweight local database powering the threshold-crossing alert log — persists each station's last known alert level across refreshes so only genuine escalations or de-escalations get logged as discrete, timestamped events."
+        },
+        {
+            tech: "Streamlit",
+            reason: "Web UI framework extended with a custom dark-navy CSS design system, tab-based navigation between the chat assistant and live map, animated live-data badges, and a persistent emergency helpline sidebar disclaimer."
+        },
+        {
+            tech: "Python 3.12",
+            reason: "Core language across the entire system — document ingestion and OCR, the C-RAG pipeline (retrieval, grading, web fallback, generation), the live map's data fetching and risk computation, and the Streamlit application layer."
+        },
+    ]
+},
+
+    2: {
     title: "MediAssist AI",
     tagline: "A multimodal clinical RAG assistant with vision, voice, and AYUSH intelligence.",
     description: "MediAssist AI is a production-grade, multimodal RAG healthcare assistant built to reason like a physician and respond like a caring doctor. It combines retrieval-augmented generation grounded in a 9,677-chunk ChromaDB knowledge base sourced from WHO fact sheets and MedlinePlus, computer vision for analysing skin conditions, wounds, and lab reports, multilingual voice I/O in Hindi and English, and a dedicated AYUSH module for Ayurvedic remedy suggestions alongside allopathic treatment. Every user message passes through a deterministic multi-stage pipeline — input sanitisation, fast rule-based triage, language detection via Devanagari Unicode ratio, patient context assembly from a 7-table SQLite schema, RAG retrieval with category-filtered ChromaDB search, prompt assembly, Gemini 2.5 Flash invocation with retry and backoff, structured field extraction, and parallel post-processing for AYUSH matching and drug interaction checks. The system features turn-aware prescribing logic that mirrors real clinical behaviour — gathering history for the first two turns before generating a full assessment and prescription. A drug interaction checker cross-references patient allergies against a curated database with cross-reactivity detection (e.g. flagging amoxicillin for a penicillin allergy) and the OpenFDA API. Security is handled through device-ID isolation with UUID v4 tagging and bcrypt-hashed 4-digit PIN authentication with constant-time comparison. Prescriptions are generated as downloadable, clinic-quality PDFs via ReportLab.",
@@ -109,92 +209,92 @@ export const projectDetails = {
     ]
 },
 
-2: {
-    title: "MeetFlow - AI Video Intelligence with RAG",
-    tagline: "Transform any video or meeting recording into structured, queryable intelligence.",
-    description: "MeetFlow is a full-stack AI pipeline that ingests YouTube videos or local audio/video files and processes them through a six-stage intelligence engine to deliver structured, actionable knowledge. It generates full verbatim transcripts, professional bullet-point summaries, and automatically extracts action items, key decisions, and open questions — all powered by Gemini 2.0 Flash. The standout feature is a RAG-powered conversational chat interface that lets you ask any question about the video content and receive answers grounded strictly in the transcript itself, with ChromaDB as the persistent vector store and all-MiniLM-L6-v2 for semantic embeddings — ensuring zero hallucination. A first-class Hindi and Hinglish support layer via Sarvam AI's saaras:v2.5 model performs speech-to-text transcription and English translation in a single API call, making the full downstream pipeline — summarisation, extraction, and RAG chat — available for Indian-language recordings. The summarisation pipeline uses a map-reduce architecture to handle transcripts of any length, and the interface is built on Streamlit extended with custom CSS, CSS variables, Syne and JetBrains Mono typography, and animated pipeline status indicators for a production-grade dark UI.",
-    liveUrl: "",
-    githubUrl: "https://github.com/priyanshu09102003/Meetflow-AI_Video_Assistant_with_RAG",
-    features: [
-        {
-            title: "RAG-Powered Conversational Chat",
-            description: "Ask any question about the video or meeting and get an answer grounded strictly in the transcript. The RAG pipeline embeds the transcript into ChromaDB using all-MiniLM-L6-v2, retrieves the top-4 most semantically relevant chunks per query, and passes them to Gemini with an explicit grounding instruction — if the answer isn't in the transcript, the model says so rather than hallucinating."
-        },
-        {
-            title: "Hindi & Hinglish Support",
-            description: "One of very few RAG pipelines with native support for Hindi and code-switched Hinglish audio. Sarvam AI's saaras:v2.5 model performs speech-to-text transcription and English translation in a single API call — the resulting English transcript feeds directly into the same summarisation, extraction, and RAG pipeline as any English recording, with no downstream code changes required."
-        },
-        {
-            title: "Map-Reduce Summarisation",
-            description: "Handles transcripts of any length using a two-phase map-reduce approach — the transcript is split into 6000-token chunks, each independently summarised by Gemini (map phase), and all partial summaries are combined into a final professional bullet-point summary (reduce phase). No context window limits, no truncation."
-        },
-        {
-            title: "Automated Insight Extraction",
-            description: "Three independent LangChain chains run against the full transcript to extract action items with owners and deadlines, key decisions made during the session, and open questions needing follow-up. Empty categories are hidden entirely — the UI expands non-empty results to fill available width dynamically."
-        },
-        {
-            title: "Multi-Source Audio Ingestion",
-            description: "Accepts YouTube URLs (downloaded via yt-dlp with FFmpeg post-processing) and local file uploads across MP4, MKV, MOV, MP3, WAV, M4A, and WebM formats. All audio is normalised to mono 16kHz WAV — the exact format Whisper and Sarvam expect — and chunked into 10-minute segments to stay within API limits."
-        },
-        {
-            title: "Local Whisper Transcription",
-            description: "English audio is transcribed entirely locally using OpenAI's Whisper small model — no API call, no cost, full privacy. All chunk transcripts are concatenated into a single continuous transcript string that feeds the downstream pipeline."
-        },
-        {
-            title: "Persistent Vector Store",
-            description: "ChromaDB persists the vector index to disk at ./vector_db/, surviving app restarts and avoiding redundant re-embedding of the same transcript across sessions. The 500-token chunk size with 50-token overlap is tuned for high retrieval precision — each chunk maps to roughly 30–45 seconds of speech, a semantically coherent unit."
-        },
-        {
-            title: "Production-Grade Dark UI",
-            description: "Built on Streamlit extended with custom CSS variables, a grid background, glow effects, animated pipeline status dots, and Syne + JetBrains Mono typography — far beyond Streamlit's default aesthetic. The sidebar shows a live six-stage pipeline status with pulsing indicators, and the results layout adapts responsively based on which insight categories have content."
-        },
-    ],
-    techStack: [
-        {
-            tech: "Gemini 2.0 Flash",
-            reason: "Primary LLM powering title generation, map-reduce summarisation, insight extraction (action items, decisions, open questions), and RAG answer generation — chosen for its 15 RPM / 1500 RPD free tier, which comfortably handles the 6–8 sequential API calls the pipeline fires per session."
-        },
-        {
-            tech: "OpenAI Whisper (small)",
-            reason: "Local English speech-to-text transcription — runs entirely on CPU with no API call, no cost, and full privacy. The small model balances transcription accuracy and speed for recordings up to several hours."
-        },
-        {
-            tech: "Sarvam AI (saaras:v2.5)",
-            reason: "State-of-the-art Indian language speech model that performs Hindi/Hinglish transcription and English translation in a single API call. Handles code-switching between Hindi and English natively, producing an English transcript that feeds directly into the downstream pipeline."
-        },
-        {
-            tech: "ChromaDB",
-            reason: "Persistent vector store for the RAG engine — stores 384-dimensional embeddings of transcript chunks on disk, enabling cosine similarity search for top-k retrieval per query and surviving app restarts without re-embedding."
-        },
-        {
-            tech: "LangChain (LCEL)",
-            reason: "Powers all LLM chain composition — the map-reduce summarisation chains, the three insight extraction chains, and the RAG chain built with LangChain Expression Language for declarative, composable retriever → prompt → LLM → parser pipelines."
-        },
-        {
-            tech: "HuggingFace all-MiniLM-L6-v2",
-            reason: "22M parameter sentence transformer producing 384-dimensional dense vectors for both transcript chunk indexing and query embedding. Runs entirely locally on CPU — no API latency or cost — with strong semantic accuracy on short text passages."
-        },
-        {
-            tech: "Streamlit",
-            reason: "Web UI framework extended with custom CSS variables, typography, glow effects, animated pipeline status indicators, and a responsive card layout — delivering a production-grade dark interface well beyond Streamlit's default aesthetic."
-        },
-        {
-            tech: "yt-dlp + FFmpeg",
-            reason: "yt-dlp handles YouTube audio extraction with FFmpeg post-processing to convert downloaded streams to clean mono 16kHz WAV — the exact format required by both Whisper and Sarvam for accurate transcription."
-        },
-        {
-            tech: "PyDub",
-            reason: "Handles format conversion for locally uploaded files (MP4, MKV, MOV, MP3, M4A, WebM) to normalised WAV, and performs the 10-minute chunking of long recordings to stay within transcription API size limits."
-        },
-        {
-            tech: "Python 3.12",
-            reason: "Core language powering the entire pipeline — audio processing, transcription routing, LLM chain orchestration, vector store management, and the Streamlit application layer."
-        },
-    ]
-}, 
-
-
     3: {
+        title: "MeetFlow - AI Video Intelligence with RAG",
+        tagline: "Transform any video or meeting recording into structured, queryable intelligence.",
+        description: "MeetFlow is a full-stack AI pipeline that ingests YouTube videos or local audio/video files and processes them through a six-stage intelligence engine to deliver structured, actionable knowledge. It generates full verbatim transcripts, professional bullet-point summaries, and automatically extracts action items, key decisions, and open questions — all powered by Gemini 2.0 Flash. The standout feature is a RAG-powered conversational chat interface that lets you ask any question about the video content and receive answers grounded strictly in the transcript itself, with ChromaDB as the persistent vector store and all-MiniLM-L6-v2 for semantic embeddings — ensuring zero hallucination. A first-class Hindi and Hinglish support layer via Sarvam AI's saaras:v2.5 model performs speech-to-text transcription and English translation in a single API call, making the full downstream pipeline — summarisation, extraction, and RAG chat — available for Indian-language recordings. The summarisation pipeline uses a map-reduce architecture to handle transcripts of any length, and the interface is built on Streamlit extended with custom CSS, CSS variables, Syne and JetBrains Mono typography, and animated pipeline status indicators for a production-grade dark UI.",
+        liveUrl: "",
+        githubUrl: "https://github.com/priyanshu09102003/Meetflow-AI_Video_Assistant_with_RAG",
+        features: [
+            {
+                title: "RAG-Powered Conversational Chat",
+                description: "Ask any question about the video or meeting and get an answer grounded strictly in the transcript. The RAG pipeline embeds the transcript into ChromaDB using all-MiniLM-L6-v2, retrieves the top-4 most semantically relevant chunks per query, and passes them to Gemini with an explicit grounding instruction — if the answer isn't in the transcript, the model says so rather than hallucinating."
+            },
+            {
+                title: "Hindi & Hinglish Support",
+                description: "One of very few RAG pipelines with native support for Hindi and code-switched Hinglish audio. Sarvam AI's saaras:v2.5 model performs speech-to-text transcription and English translation in a single API call — the resulting English transcript feeds directly into the same summarisation, extraction, and RAG pipeline as any English recording, with no downstream code changes required."
+            },
+            {
+                title: "Map-Reduce Summarisation",
+                description: "Handles transcripts of any length using a two-phase map-reduce approach — the transcript is split into 6000-token chunks, each independently summarised by Gemini (map phase), and all partial summaries are combined into a final professional bullet-point summary (reduce phase). No context window limits, no truncation."
+            },
+            {
+                title: "Automated Insight Extraction",
+                description: "Three independent LangChain chains run against the full transcript to extract action items with owners and deadlines, key decisions made during the session, and open questions needing follow-up. Empty categories are hidden entirely — the UI expands non-empty results to fill available width dynamically."
+            },
+            {
+                title: "Multi-Source Audio Ingestion",
+                description: "Accepts YouTube URLs (downloaded via yt-dlp with FFmpeg post-processing) and local file uploads across MP4, MKV, MOV, MP3, WAV, M4A, and WebM formats. All audio is normalised to mono 16kHz WAV — the exact format Whisper and Sarvam expect — and chunked into 10-minute segments to stay within API limits."
+            },
+            {
+                title: "Local Whisper Transcription",
+                description: "English audio is transcribed entirely locally using OpenAI's Whisper small model — no API call, no cost, full privacy. All chunk transcripts are concatenated into a single continuous transcript string that feeds the downstream pipeline."
+            },
+            {
+                title: "Persistent Vector Store",
+                description: "ChromaDB persists the vector index to disk at ./vector_db/, surviving app restarts and avoiding redundant re-embedding of the same transcript across sessions. The 500-token chunk size with 50-token overlap is tuned for high retrieval precision — each chunk maps to roughly 30–45 seconds of speech, a semantically coherent unit."
+            },
+            {
+                title: "Production-Grade Dark UI",
+                description: "Built on Streamlit extended with custom CSS variables, a grid background, glow effects, animated pipeline status dots, and Syne + JetBrains Mono typography — far beyond Streamlit's default aesthetic. The sidebar shows a live six-stage pipeline status with pulsing indicators, and the results layout adapts responsively based on which insight categories have content."
+            },
+        ],
+        techStack: [
+            {
+                tech: "Gemini 2.0 Flash",
+                reason: "Primary LLM powering title generation, map-reduce summarisation, insight extraction (action items, decisions, open questions), and RAG answer generation — chosen for its 15 RPM / 1500 RPD free tier, which comfortably handles the 6–8 sequential API calls the pipeline fires per session."
+            },
+            {
+                tech: "OpenAI Whisper (small)",
+                reason: "Local English speech-to-text transcription — runs entirely on CPU with no API call, no cost, and full privacy. The small model balances transcription accuracy and speed for recordings up to several hours."
+            },
+            {
+                tech: "Sarvam AI (saaras:v2.5)",
+                reason: "State-of-the-art Indian language speech model that performs Hindi/Hinglish transcription and English translation in a single API call. Handles code-switching between Hindi and English natively, producing an English transcript that feeds directly into the downstream pipeline."
+            },
+            {
+                tech: "ChromaDB",
+                reason: "Persistent vector store for the RAG engine — stores 384-dimensional embeddings of transcript chunks on disk, enabling cosine similarity search for top-k retrieval per query and surviving app restarts without re-embedding."
+            },
+            {
+                tech: "LangChain (LCEL)",
+                reason: "Powers all LLM chain composition — the map-reduce summarisation chains, the three insight extraction chains, and the RAG chain built with LangChain Expression Language for declarative, composable retriever → prompt → LLM → parser pipelines."
+            },
+            {
+                tech: "HuggingFace all-MiniLM-L6-v2",
+                reason: "22M parameter sentence transformer producing 384-dimensional dense vectors for both transcript chunk indexing and query embedding. Runs entirely locally on CPU — no API latency or cost — with strong semantic accuracy on short text passages."
+            },
+            {
+                tech: "Streamlit",
+                reason: "Web UI framework extended with custom CSS variables, typography, glow effects, animated pipeline status indicators, and a responsive card layout — delivering a production-grade dark interface well beyond Streamlit's default aesthetic."
+            },
+            {
+                tech: "yt-dlp + FFmpeg",
+                reason: "yt-dlp handles YouTube audio extraction with FFmpeg post-processing to convert downloaded streams to clean mono 16kHz WAV — the exact format required by both Whisper and Sarvam for accurate transcription."
+            },
+            {
+                tech: "PyDub",
+                reason: "Handles format conversion for locally uploaded files (MP4, MKV, MOV, MP3, M4A, WebM) to normalised WAV, and performs the 10-minute chunking of long recordings to stay within transcription API size limits."
+            },
+            {
+                tech: "Python 3.12",
+                reason: "Core language powering the entire pipeline — audio processing, transcription routing, LLM chain orchestration, vector store management, and the Streamlit application layer."
+            },
+        ]
+    }, 
+
+
+    4: {
         title: "CodePilot",
         tagline: "AI-powered cloud IDE — like Cursor, but as a SaaS.",
         description: "CodePilot is a full-stack, browser-based code editor powered by an autonomous AI agent built with Inngest AgentKit. It combines a professional IDE experience — syntax highlighting, tabbed file switcher, ghost text completions, and Cmd+K quick edits — with a live in-browser preview via WebContainers, deep GitHub import/export, Firecrawl-powered URL scraping for real-time docs injection, and a complete SaaS billing layer. The AI agent reasons over your entire file tree and conversation history to autonomously create, edit, and delete files — all while you watch the changes reflect live.",
@@ -285,7 +385,7 @@ export const projectDetails = {
             },
         ]
     },
-    4: {
+    5: {
         title: "FluxorAI",
         tagline: "A visual AI-automation platform to build, automate, and deploy intelligent AI workflows at scale.",
         description: "FluxorAI is a production-ready SaaS platform for building intelligent automation workflows through a drag-and-drop canvas powered by React Flow. Connect trigger nodes (Webhook, Google Forms, Stripe, Manual) to AI nodes (OpenAI, Claude, Gemini) and messaging nodes (Discord, Slack) with a type-safe variable templating system that passes data seamlessly between steps. Workflows run as durable Inngest background jobs with automatic retries and real-time WebSocket updates that animate the canvas live. All credentials are encrypted at rest with Cryptr, every LLM call is tracked via Sentry AI Monitoring, and the full SaaS billing layer is powered by Polar — with a 1-month free trial and global tax compliance out of the box.",
@@ -381,7 +481,7 @@ export const projectDetails = {
         ]
     },
 
-     5: {
+     6: {
         title: "Signalist",
         tagline: "Real-time market intelligence for stocks & crypto — all in one place.",
         description: "Signalist is a comprehensive market intelligence platform for stocks and cryptocurrencies. The dashboard combines live sector heatmaps, TradingView candlestick charts, real-time financial tables, and top market news — all powered by Finnhub and CoinGecko APIs. A global ⌘K search gives instant access to any stock or coin, with detailed pages showing OHLCV charts, technical analysis gauges, and full fundamental data (P/E, margins, cash flow, ROE). Add any stock to your watchlist and Inngest background workflows kick in automatically — running daily cron jobs that fetch live data, generate AI-powered buy/sell insights, and deliver personalized email reports via Nodemailer. The crypto section covers trending coins, top categories (DeFi, L1, stablecoins), exchange listings, and a multi-currency price converter.",
@@ -461,7 +561,7 @@ export const projectDetails = {
         ]
     },
 
-    6: {
+    7: {
     title: "SensAI",
     tagline: "An all-in-one AI career ecosystem — from resume to offer letter.",
     description: "SensAI is a full-stack, production-ready AI career platform built over 4 months, designed to solve the fragmented job-hunting experience. Most job seekers apply blindly without understanding industry expectations, optimizing their resumes for ATS systems, or preparing effectively for interviews. SensAI consolidates all of this into a single intelligent ecosystem. The platform features a Dynamic Industry Dashboard with live salary data, skill-gap analysis, and weekly auto-updated market trends across 50+ industries. The resume toolkit includes an ATS-optimized builder with AI-powered scoring, formatting feedback, and an AI cover letter generator tailored to specific roles. For interview preparation, SensAI integrates VAPI AI for real-time voice-based mock interviews with performance analytics, curated technical and behavioral question banks, and a progress tracking dashboard with graphical analytics. SensX — the built-in AI career assistant — provides 24/7 guidance, doubt resolution, and personalized upskilling recommendations. The Roadmap Generator uses React Flow to visualize dynamic, AI-curated learning paths with live resource links. SensAI Scheduler adds a full video-calling infrastructure powered by Stream API — supporting group meetings, face-to-face training sessions, live meeting room generation, and calendar-integrated scheduling. Inngest powers all background job automation including resume scoring workflows and scheduled insight generation, while Clerk and Stripe handle authentication and subscription billing at production scale.",
@@ -553,7 +653,7 @@ export const projectDetails = {
     ]
 },
 
-    7: {
+    8: {
     title: "DeepScope",
     tagline: "AI-powered genomic variant analysis — predict DNA mutation pathogenicity with a 7B genomic language model.",
     description: "DeepScope is a full-stack biomedical web application built by me and my team as a research project, aimed to make state-of-the-art genomic intelligence accessible through a modern browser-based interface. The platform was developed across two phases. Phase I established a molecular design and drug discovery research layer, integrating NVIDIA MolMIM (a latent variable model trained on 1.54 billion molecules from ZINC-15) with PubChem chemical data and RDKit cheminformatics — enabling novel drug-like molecule generation with 85% novelty and 92% Lipinski compliance using the CMA-ES optimisation algorithm. Phase II delivered the core production system: a genomic variant analysis engine powered by the EVO2 7B genomic language model, trained on 8.8 trillion tokens across all domains of life using the StripedHyena 2 architecture. Deployed on serverless NVIDIA H100 GPUs via Modal, DeepScope accepts a genomic position and an alternative nucleotide, fetches a live 8,192 base-pair reference window from the UCSC Genome Browser, scores both the reference and mutated sequences via log-likelihood analysis, and classifies Single Nucleotide Variants (SNVs) as Likely Pathogenic or Likely Benign with a calibrated confidence score. The classification threshold was derived from a ROC analysis on BRCA1 variants from the ClinVar database. The Next.js frontend features a live interactive nucleotide sequence viewer, gene and chromosome browser, a paginated ClinVar variant explorer, and a side-by-side comparison modal to benchmark EVO2 predictions against established clinical classifications — validated on genes including BRCA1, BRAF, TP53, and LDLR.",
@@ -661,7 +761,7 @@ export const projectDetails = {
     ]
 },
 
-    8: {
+    9: {
     title: "SpecTrum",
     tagline: "A unified learning platform that merges instructor-led courses with AI-powered on-demand learning.",
     description: "SpecTrum is a full-stack educational technology platform built with my team at the Dawn of Code Hackathon, where we reached the finals. It solves the 'knowledge juggle' problem — students, researchers, and professionals waste up to 40% of their productive time context-switching across fragmented tools like Coursera, ChatGPT, Google Docs, and Zotero. SpecTrum consolidates all of this into one seamless ecosystem. The platform operates on a dual-mode architecture: the 'Guided Path' for structured, instructor-led courses with timestamps, note uploads, and a doubt engine — and the 'Express Lane', an LLM-powered AI engine that generates fully personalised courses on any topic in under 60 seconds, complete with curated resources, lecture summaries, video content, and digital notes. The frontend integrates Three.js for immersive 3D learning environments, transforming traditional course interfaces into interactive spatial experiences. The backend is built on Prisma ORM with PostgreSQL for type-safe data management, Arcjet for bot protection and rate limiting, AWS S3 with pre-signed URLs for secure media storage, and Stripe for subscription billing.",
@@ -745,7 +845,7 @@ export const projectDetails = {
     ]
 },
 
-9: {
+10: {
     title: "Apex UI",
     tagline: "An open-source React component library for building production-grade applications faster.",
     description: "Apex UI is a premium, open-source UI component library built with Next.js 16, React 19+, TypeScript, and Tailwind CSS v4. It delivers 100+ beautifully crafted, animated, and accessible components and composite blocks that drop into any project with a single CLI command. The library is architected around a dual registry system — separate registries for modular individual components and multi-file composite blocks — with automated CLI-based installation via the shadcn registry protocol and intelligent dependency resolution that handles transitive requirements automatically. Components are built on top of shadcn/ui and Radix UI primitives, extended with custom CSS animations, advanced interactivity, and WCAG accessibility compliance. The documentation site is built with Fumadocs and features live component previews, interactive code playgrounds, and v0 editor integration for real-time editing. The theming system is built on Tailwind CSS v4 CSS variables and design tokens, enabling full visual customisation without touching component internals. Apex UI was created to empower developers with production-grade UI components, improve design consistency across applications, and contribute high-quality reusable components back to the open-source community.",
@@ -817,7 +917,7 @@ export const projectDetails = {
     ]
 },
 
-10: {
+11: {
     title: "CodeSwift : 3D Landing Page for a Keyboard E-Commerce Platform",
     tagline: "A visually immersive e-commerce landing page with 3D animations and headless CMS.",
     description: "It is a frontend-forward e-commerce landing page built to push the boundaries of what a web interface can feel like. The project is a deep dive into modern frontend craft — combining Next.js for performance and routing, Three.js for interactive 3D scene rendering directly in the browser, GSAP for silky-smooth scroll-driven animations and timeline sequences, and Prismic as the headless CMS powering all dynamic content. The result is a landing page that doesn't just display information — it responds, breathes, and pulls the user in. Every scroll triggers a choreographed animation, every section transition is purposeful, and the 3D elements add a spatial depth that flat interfaces simply can't replicate. Tailwind CSS handles the responsive layout system, ensuring the immersive experience translates cleanly across all screen sizes. CodeSwift is a showcase of what's possible when frontend development is treated as a craft — where performance, motion design, and visual storytelling converge into a single cohesive experience.",
@@ -868,7 +968,7 @@ export const projectDetails = {
         },
     ]
 },
-11: {
+12: {
     title: "Skateboards",
     tagline: "A 3D skateboard brand website with a real-time interactive board customizer.",
     description: "Skateboards is a visually immersive e-commerce landing page and interactive product customizer for a fictional skateboard brand, built to demonstrate what modern frontend development is truly capable of. The landing page is packed with scroll-driven GSAP animations, parallax sections, a physics-based interactive footer, slide-in transitions, and a fully animated 3D hero scene rendered with Three.js. The star of the project is the real-time skateboard customizer — users can swap every component of a board in real time, including the deck texture, grip tape, wheels, and trucks, with all changes reflected instantly on a live 3D model in the browser. The customizer uses React Context for state management and encodes the current board configuration directly into the URL, making every custom design shareable with a link. GSAP handles all 3D board trick animations triggered by user interaction — kickflips, ollies, and more — choreographed against the Three.js scene with hitbox-based interaction zones. All content including textures, team members, and product data is managed through Prismic's headless CMS with Slice Machine, enabling a fully composable page-building experience. The entire project is built on Next.js 15 with TypeScript and Tailwind CSS, deployed with live Prismic preview support.",
@@ -932,7 +1032,7 @@ export const projectDetails = {
     ]
 },
 
-12: {
+13: {
     title: "Equity Research Analyst — RAG-Powered Financial Intelligence",
     tagline: "An AI equity analyst that retrieves, reasons, and charts — grounded strictly in source articles.",
     description: "Equity Research Analyst is a full-stack RAG pipeline that turns financial news URLs into an interactive analyst you can question. Paste in article links and ask anything from 'What are the key risks?' to 'Compare revenue growth across companies' — the system retrieves relevant context, reasons over it, and even generates charts, just like a real analyst would. Under the hood, WebBaseLoader fetches and parses live article content from any URL, RecursiveCharacterTextSplitter chunks the text into roughly 700-token segments, and HuggingFace sentence-transformers convert each chunk into a semantic vector embedding stored in a FAISS index for millisecond similarity search. A query router classifies each incoming question as retrieval, analysis, or chart-generation, routing it down the appropriate path. For factual questions, Gemini 2.5 Flash answers strictly grounded in the top-K retrieved chunks via a carefully designed prompt template — eliminating hallucination by anchoring every claim to the source text. For analytical questions, the model reasons more freely across the retrieved context like a human analyst would, with anything extending beyond the source material explicitly labelled [Analyst View] so the user always knows what's grounded fact versus inference. The project was built as a project-based deep dive into standardised LangChain components — document loaders, text splitters, embeddings, vector stores, and prompt templates — each handled by a single, composable building block.",

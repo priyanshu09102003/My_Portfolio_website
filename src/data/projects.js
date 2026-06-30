@@ -2,6 +2,17 @@ export const projects = [
 
     {
         id: 1,
+        title: "Plabon (প্লাৱন) - A C-RAG Flood & Disaster Relief Assistant",
+        description: "A Corrective-RAG flood and disaster relief assistant for Assam, grounded in official SOPs and live data.",
+        image: '/images/projects/plabon.png',
+        category: "GenAI",
+        technologies: ['Gemini 2.5', 'ChromaDB', 'LangChain', 'Folium', 'Open-Meteo API', 'Python', 'C-RAG'],
+        demoUrl: 'https://plabon.streamlit.app/',
+        githubUrl: 'https://github.com/priyanshu09102003/Plabon---A_flood_relief_Corrective_RAG'
+    },
+
+    {
+        id: 2,
         title: "MediAssist AI - Clinical RAG Assistant with Vision & Voice",
         description: "A multimodal clinical RAG assistant with vision, voice, and AYUSH intelligence.",
         image: '/images/projects/mediassist.png',
@@ -12,7 +23,7 @@ export const projects = [
     },
 
     {
-        id: 2,
+        id: 3,
         title: "MeetFlow - AI Video Intelligence with RAG",
         description: "Transform any video or meeting recording into structured, queryable intelligence.",
         image: '/images/projects/meetflow.png',
@@ -22,7 +33,7 @@ export const projects = [
         githubUrl: 'https://github.com/priyanshu09102003/Meetflow-AI_Video_Assistant_with_RAG'
     },
     {
-        id: 3,
+        id: 4,
         title: "CodePilot: A Cloud-Based AI Code Editor",
         description: "A browser-based, AI-powered code editor with agentic intelligence — like Cursor, but as a SaaS.",
         image: '/images/projects/codepilot.png',
@@ -32,7 +43,7 @@ export const projects = [
         githubUrl: 'https://github.com/priyanshu09102003/codepilot-AI_CLOUD_IDE'
     },
     {
-        id: 4,
+        id: 5,
         title: "FluxorAI: A Visual AI-automation Platform",
         description: "A visual AI-automation platform to build, automate, and deploy intelligent AI workflows at scale.",
         image: '/images/projects/fluxorai.png',
@@ -42,7 +53,7 @@ export const projects = [
         githubUrl: 'https://github.com/priyanshu09102003/fluxorAI'
     },
     {
-        id: 5,
+        id: 6,
         title: "Signalist: A Stock Market and Crypto Intelligence Platform",
         description: "Real-time market intelligence for stocks & crypto — all in one place.",
         image: '/images/projects/signalist.png',
@@ -52,7 +63,7 @@ export const projects = [
         githubUrl: 'https://github.com/priyanshu09102003/Signalist_Stock_Market_Application'
     },
     {
-        id: 6,
+        id: 7,
         title: "SensAI: Your Personalized AI Career Coach",
         description: "An all-in-one AI career ecosystem — from resume to offer letter.",
         image: '/images/projects/sensai.png',
@@ -62,7 +73,7 @@ export const projects = [
         githubUrl: 'https://github.com/priyanshu09102003/SensAI'
     },
     {
-        id: 7,
+        id: 8,
         title: "DeepScope: Drug and Chromosomal Research Agent",
         description: "AI-powered genomic variant analysis — predict DNA mutation pathogenicity with a 7B genomic language model.",
         image: '/images/projects/deepscope.png',
@@ -72,7 +83,7 @@ export const projects = [
         githubUrl: 'https://github.com/priyanshu09102003/DeepScope-VariantAnalyzer'
     },
     {
-        id: 8,
+        id: 9,
         title: "SpecTrum: One platform. Every way to learn.",
         description: "A unified learning platform that merges instructor-led courses with AI-powered on-demand learning.",
         image: '/images/projects/spectrum.png',
@@ -82,7 +93,7 @@ export const projects = [
         githubUrl: ''
     },
     {
-        id: 9,
+        id: 10,
         title: "ApexUI - An open-source React component library",
         description: "An open-source React component library for building production-grade applications faster.",
         image: '/images/projects/apexui.png',
@@ -92,7 +103,7 @@ export const projects = [
         githubUrl: 'https://github.com/priyanshu09102003/APEX-UI_An_opensource_Component_Library'
     },
     {
-        id: 10,
+        id: 11,
         title: "CodeSwift : 3D Landing Page for a Keyboard E-Commerce Platform",
         description: "A visually immersive e-commerce landing page with 3D animations and headless CMS.",
         image: '/images/projects/codeswift.png',
@@ -102,7 +113,7 @@ export const projects = [
         githubUrl: 'https://github.com/priyanshu09102003/CodeSwift---a-development-code-IDE'
     },
     {
-        id: 11,
+        id: 12,
         title: "Skateboards : 3D Webstore E-Commerce with Board Customizer",
         description: "A 3D skateboard brand website with a real-time interactive board customizer.",
         image: '/images/projects/skateboards.png',
@@ -112,7 +123,7 @@ export const projects = [
         githubUrl: 'https://github.com/priyanshu09102003/Skateboards-3D-Webstore'
     },
     {
-        id: 12,
+        id: 13,
         title: "Equity Research Analyst — RAG-Powered Financial Intelligence",
         description: "An AI equity analyst that retrieves, reasons, and charts — grounded strictly in source articles.",
         image: '/images/projects/equity.png',
