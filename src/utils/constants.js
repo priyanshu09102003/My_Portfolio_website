@@ -13,14 +13,14 @@ export const PERSONAL_INFO = {
 };
 
 export const STATS = [
-    { label: "Global Rank (Codolio)", value: "3762" },
+    { label: "Global Rank (Codolio)", value: "3732" },
     { label: "GitHub Commits", value: "900+" },
     { label: "Problems Solved", value: "400+" },
     { label: "Technologies Explored", value: "20+" }
 ];
 
 export const ABOUT_STATS = [
-    { label: "Coding Exp(Years)", value: "3+" },
+    { label: "RAG Pipelines", value: "3+" },
     { label: "API Integrations", value: "15+" },
     { label: "Projects Shipped", value: "10+" },
 ];
